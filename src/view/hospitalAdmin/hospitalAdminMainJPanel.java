@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package view.hospitalAdmin;
 
 /**
  *
  * @author dell
  */
-public class LoginJPanel extends javax.swing.JPanel {
+public class hospitalAdminMainJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form LoginJPanel
+     * Creates new form hospitalAdminMainJPanel
      */
-    public LoginJPanel() {
+    public hospitalAdminMainJPanel() {
         initComponents();
     }
 
@@ -28,7 +28,6 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(620, 540));
         setMinimumSize(new java.awt.Dimension(620, 540));
-        setPreferredSize(new java.awt.Dimension(620, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
