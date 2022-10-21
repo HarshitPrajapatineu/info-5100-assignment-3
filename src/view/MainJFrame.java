@@ -15,6 +15,9 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        HomeViewJPanel homeViewPanel = new HomeViewJPanel();
+        splitJPane.setRightComponent(homeViewPanel);
+        
     }
 
     /**
@@ -26,7 +29,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        splitJPane = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         adminJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -40,8 +43,8 @@ public class MainJFrame extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(780, 540));
         setMinimumSize(new java.awt.Dimension(780, 540));
 
-        jSplitPane1.setDividerLocation(160);
-        jSplitPane1.setDividerSize(1);
+        splitJPane.setDividerLocation(160);
+        splitJPane.setDividerSize(1);
 
         adminJButton.setText("Administrator");
         adminJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,20 +109,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adminJButton, jButton1, jButton2, jButton3, jButton4, jButton5});
 
-        jSplitPane1.setLeftComponent(jPanel2);
+        splitJPane.setLeftComponent(jPanel2);
 
         jPanel3.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(jPanel3);
+        splitJPane.setRightComponent(jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(splitJPane, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(splitJPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -177,6 +180,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane splitJPane;
     // End of variables declaration//GEN-END:variables
 }
