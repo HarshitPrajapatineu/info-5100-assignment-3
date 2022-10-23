@@ -8,12 +8,12 @@ package view.admin;
  *
  * @author dell
  */
-public class ViewHosAdminJPanel extends javax.swing.JPanel {
+public class ViewCommAdminJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewHosAdminJPanel
      */
-    public ViewHosAdminJPanel() {
+    public ViewCommAdminJPanel() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        viewUserTable = new javax.swing.JTable();
+        viewUserJTable = new javax.swing.JTable();
         viewJButton = new javax.swing.JButton();
         editJButton = new javax.swing.JButton();
         deleteJButton = new javax.swing.JButton();
@@ -61,9 +61,9 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(620, 540));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Manage Hospital Admin");
+        jLabel1.setText("Manage Community Admin");
 
-        viewUserTable.setModel(new javax.swing.table.DefaultTableModel(
+        viewUserJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -82,11 +82,11 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(viewUserTable);
-        if (viewUserTable.getColumnModel().getColumnCount() > 0) {
-            viewUserTable.getColumnModel().getColumn(0).setResizable(false);
-            viewUserTable.getColumnModel().getColumn(1).setResizable(false);
-            viewUserTable.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(viewUserJTable);
+        if (viewUserJTable.getColumnModel().getColumnCount() > 0) {
+            viewUserJTable.getColumnModel().getColumn(0).setResizable(false);
+            viewUserJTable.getColumnModel().getColumn(1).setResizable(false);
+            viewUserJTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         viewJButton.setText("View Details");
@@ -384,6 +384,6 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;
     private javax.swing.JButton viewJButton;
-    private javax.swing.JTable viewUserTable;
+    private javax.swing.JTable viewUserJTable;
     // End of variables declaration//GEN-END:variables
 }
