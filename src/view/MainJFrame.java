@@ -5,7 +5,10 @@
 package view;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
+import common.Enum;
+import java.util.Locale;
 
 /**
  *
@@ -16,12 +19,18 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    
+    ArrayList<String> cityList = new ArrayList<String>();
+    
     public MainJFrame() {
         initComponents();
         HomeViewJPanel homeViewPanel = new HomeViewJPanel();
         userProcessJPanel.add("HomeViewJPanel", homeViewPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
+        prepCityList();
+        
+        
         
     }
 
@@ -183,6 +192,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
+    }
+    
+    public void prepCityList() {
+        for (int i = 0; i < Enum.City.values().length; i++) {
+            cityList.add(Enum.City.values()[i].toString().toLowerCase(Locale.getDefault()));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
