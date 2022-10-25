@@ -47,7 +47,12 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="userControlJPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -61,17 +66,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="adminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnCommAdmin" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnHosAdmin" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnGuestUser" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnDoctor" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="commAdminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="hosAdminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="guestUserJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="doctorJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="patientJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jBtnPatient" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -80,16 +81,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                       <Component id="adminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="commAdminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="hosAdminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="doctorJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jBtnCommAdmin" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jBtnHosAdmin" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jBtnDoctor" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="patientJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="jBtnPatient" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jBtnGuestUser" linkSize="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="guestUserJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="162" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -98,43 +99,66 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="adminJButton">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Administrator"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminJButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jBtnCommAdmin">
+            <Component class="javax.swing.JButton" name="commAdminJButton">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Community Admin"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCommAdminActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commAdminJButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jBtnHosAdmin">
+            <Component class="javax.swing.JButton" name="hosAdminJButton">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hospital Admin"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jBtnPatient">
+            <Component class="javax.swing.JButton" name="guestUserJButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Patient"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jBtnGuestUser">
-              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Guest User"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jBtnDoctor">
+            <Component class="javax.swing.JButton" name="doctorJButton">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Doctor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="patientJButton">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Patient"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="userProcessJPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="right"/>
