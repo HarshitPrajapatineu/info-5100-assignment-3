@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
 import common.Enum;
 import java.util.Locale;
+import view.doctor.ViewDoctorJPanel;
 
 /**
  *
@@ -86,6 +87,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         doctorJButton.setBackground(new java.awt.Color(253, 228, 227));
         doctorJButton.setText("Doctor");
+        doctorJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorJButtonActionPerformed(evt);
+            }
+        });
 
         patientJButton.setBackground(new java.awt.Color(253, 228, 227));
         patientJButton.setText("Patient");
@@ -158,6 +164,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_commAdminJButtonActionPerformed
+
+    private void doctorJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorJButtonActionPerformed
+        ViewDoctorJPanel doctorJPanel = new ViewDoctorJPanel(userProcessJPanel);
+        userProcessJPanel.add("DoctorMainJPanel", doctorJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_doctorJButtonActionPerformed
 
     /**
      * @param args the command line arguments
