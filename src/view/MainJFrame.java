@@ -5,6 +5,9 @@
 package view;
 
 import java.awt.CardLayout;
+import view.CommunityAdmin.CommAdminMainJPanel;
+import view.admin.AdminMainJPanel;
+import view.hospitalAdmin.HospAdminMainJPanel;
 import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
 import common.Enum;
@@ -80,6 +83,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         hosAdminJButton.setBackground(new java.awt.Color(253, 228, 227));
         hosAdminJButton.setText("Hospital Admin");
+        hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hosAdminJButtonActionPerformed(evt);
+            }
+        });
 
         guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
         guestUserJButton.setText("Guest User");
@@ -158,6 +166,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_commAdminJButtonActionPerformed
+
+    private void hosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosAdminJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hosAdminJButtonActionPerformed
 
     /**
      * @param args the command line arguments
