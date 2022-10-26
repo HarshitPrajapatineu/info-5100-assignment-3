@@ -30,4 +30,14 @@ public class Enum {
         KITCHENER,
         VAUGHAN
     };
+    
+    public enum UserRole {
+        SYSTEM_ADMINISTRATOR,
+        COMMUNITY_ADMINISTRATOR,
+        HOSPITAL_ADMINISTRATOR,
+        DOCTOR,
+        PATIENT,
+        GUEST
+        
+    }
 }
