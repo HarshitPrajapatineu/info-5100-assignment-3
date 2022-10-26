@@ -5,6 +5,9 @@
 package view;
 
 import java.awt.CardLayout;
+import view.CommunityAdmin.CommAdminMainJPanel;
+import view.admin.AdminMainJPanel;
+import view.hospitalAdmin.HospAdminMainJPanel;
 import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
 import common.Enum;
