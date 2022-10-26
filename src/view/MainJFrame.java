@@ -5,7 +5,9 @@
 package view;
 
 import java.awt.CardLayout;
+import view.CommunityAdmin.CommAdminMainJPanel;
 import view.admin.AdminMainJPanel;
+import view.hospitalAdmin.HospAdminMainJPanel;
 
 /**
  *
@@ -71,6 +73,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         hosAdminJButton.setBackground(new java.awt.Color(253, 228, 227));
         hosAdminJButton.setText("Hospital Admin");
+        hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hosAdminJButtonActionPerformed(evt);
+            }
+        });
 
         guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
         guestUserJButton.setText("Guest User");
@@ -147,8 +154,18 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_adminJButtonActionPerformed
 
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
-        // TODO add your handling code here:
+        CommAdminMainJPanel commAdminMainJPanel = new CommAdminMainJPanel(userProcessJPanel);
+        userProcessJPanel.add("CommAdminMainJPanel", commAdminMainJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_commAdminJButtonActionPerformed
+
+    private void hosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosAdminJButtonActionPerformed
+        HospAdminMainJPanel hospAdminMainJPanel = new HospAdminMainJPanel(userProcessJPanel);
+        userProcessJPanel.add("HospAdminMainJPanel", hospAdminMainJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_hosAdminJButtonActionPerformed
 
     /**
      * @param args the command line arguments
