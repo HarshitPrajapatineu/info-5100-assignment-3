@@ -8,10 +8,6 @@ package model;
  *
  * @author dell
  */
-public class Patient extends Person {
-    
-    private int patientId;
-    private int hospitalId;
-    
+public class Encounter {
     
 }

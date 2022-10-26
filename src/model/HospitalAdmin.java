@@ -8,31 +8,9 @@ package model;
  *
  * @author dell
  */
-public class Doctor extends Person {
-
-    public Doctor() {
-    }
-    
-    private int empId;
-    private String expertise;
+public class HospitalAdmin extends Person{
     private int hospitalId;
 
-    public int getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
-
-    public String getExpertise() {
-        return expertise;
-    }
-
-    public void setExpertise(String expertise) {
-        this.expertise = expertise;
-    }
-    
     public int getHospitalId() {
         return hospitalId;
     }
@@ -40,4 +18,7 @@ public class Doctor extends Person {
     public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
     }
+    
+    
+    
 }
