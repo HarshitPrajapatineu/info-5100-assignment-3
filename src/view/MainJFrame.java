@@ -5,9 +5,10 @@
 package view;
 
 import java.awt.CardLayout;
-import view.CommunityAdmin.CommAdminMainJPanel;
+import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
-import view.hospitalAdmin.HospAdminMainJPanel;
+import common.Enum;
+import java.util.Locale;
 
 /**
  *
@@ -18,12 +19,18 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    
+    ArrayList<String> cityList = new ArrayList<String>();
+    
     public MainJFrame() {
         initComponents();
         HomeViewJPanel homeViewPanel = new HomeViewJPanel();
         userProcessJPanel.add("HomeViewJPanel", homeViewPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
+        prepCityList();
+        
+        
         
     }
 
@@ -73,11 +80,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         hosAdminJButton.setBackground(new java.awt.Color(253, 228, 227));
         hosAdminJButton.setText("Hospital Admin");
-        hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hosAdminJButtonActionPerformed(evt);
-            }
-        });
 
         guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
         guestUserJButton.setText("Guest User");
@@ -154,18 +156,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_adminJButtonActionPerformed
 
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
-        CommAdminMainJPanel commAdminMainJPanel = new CommAdminMainJPanel(userProcessJPanel);
-        userProcessJPanel.add("CommAdminMainJPanel", commAdminMainJPanel);
-        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
-        layout.next(userProcessJPanel);
+        // TODO add your handling code here:
     }//GEN-LAST:event_commAdminJButtonActionPerformed
-
-    private void hosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosAdminJButtonActionPerformed
-        HospAdminMainJPanel hospAdminMainJPanel = new HospAdminMainJPanel(userProcessJPanel);
-        userProcessJPanel.add("HospAdminMainJPanel", hospAdminMainJPanel);
-        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
-        layout.next(userProcessJPanel);
-    }//GEN-LAST:event_hosAdminJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +192,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
+    }
+    
+    public void prepCityList() {
+        for (int i = 0; i < Enum.City.values().length; i++) {
+            cityList.add(Enum.City.values()[i].toString().toLowerCase(Locale.getDefault()));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
