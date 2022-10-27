@@ -18,6 +18,7 @@ public class Person {
     private String phone;
     private String emailId;
     private Address address;
+    private Enum.UserRole userRole;
 
     public String getPersonId() {
         return personId;
@@ -81,6 +82,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Enum.UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Enum.UserRole userRole) {
+        this.userRole = userRole;
     }
     
 }
