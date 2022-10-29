@@ -12,7 +12,16 @@ public class Address {
     private String addressTwo;
     private Enum.City city;
     private String postalCode;
+    private String communityName;
 
+    public String getCommunityName() {
+        return communityName;
+    }
+
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
+    }
+    
     public String getAddressOne() {
         return addressOne;
     }
