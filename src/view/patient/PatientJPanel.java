@@ -33,6 +33,12 @@ public class PatientJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        jAppointmentButton = new javax.swing.JButton();
+        jEncounterButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(620, 540));
+        setMinimumSize(new java.awt.Dimension(620, 540));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -46,16 +52,33 @@ public class PatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        jAppointmentButton.setBackground(new java.awt.Color(255, 255, 255));
+        jAppointmentButton.setText("Book an appointment");
+        jAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAppointmentButtonActionPerformed(evt);
+            }
+        });
+
+        jEncounterButton.setBackground(new java.awt.Color(255, 255, 255));
+        jEncounterButton.setText("View Encounter History");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(backJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(147, 147, 147))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +87,11 @@ public class PatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backJButton))
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -74,9 +101,15 @@ public class PatientJPanel extends javax.swing.JPanel {
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void jAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAppointmentButtonActionPerformed
+        
+    }//GEN-LAST:event_jAppointmentButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton jAppointmentButton;
+    private javax.swing.JButton jEncounterButton;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

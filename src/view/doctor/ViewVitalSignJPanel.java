@@ -132,12 +132,6 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,8 +166,13 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                                     .addComponent(jTextField8)
                                     .addComponent(jTextField9)
                                     .addComponent(jTextField10)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(backJButton)
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
