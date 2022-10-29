@@ -6,6 +6,7 @@ package view.admin;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -18,11 +19,13 @@ public class AdminMainJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessJPanel;
+    SystemData sysData;
     
-    public AdminMainJPanel(JPanel userProcessJPanel) {
+    public AdminMainJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**
@@ -189,7 +192,7 @@ public class AdminMainJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageHosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHosAdminJButtonActionPerformed
-        ViewHosAdminJPanel viewHosAdminJPanel = new ViewHosAdminJPanel(userProcessJPanel);
+        ViewHosAdminJPanel viewHosAdminJPanel = new ViewHosAdminJPanel(userProcessJPanel, sysData);
         userProcessJPanel.add("ViewHosAdminJPanel", viewHosAdminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
