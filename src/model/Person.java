@@ -11,8 +11,8 @@ import common.Enum;
  */
 public class Person {
     private String personId;
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
     private String dob;
     private Enum.Gender gender;
     private String phone;
@@ -29,19 +29,19 @@ public class Person {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
-    public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDob() {

@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.util.ArrayList;
 
 /**
@@ -20,5 +19,4 @@ public class PatientList {
     public void setPatientList(ArrayList<Patient> patientList) {
         this.patientList = patientList;
     }
-    
 }

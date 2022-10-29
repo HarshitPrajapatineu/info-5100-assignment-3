@@ -9,7 +9,7 @@ package model;
  * @author dell
  */
 public class Hospital {
-
+    private int hospitalId;
     private String hospitalName;
     private Address address;
     private String phone;

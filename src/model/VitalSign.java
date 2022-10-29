@@ -9,7 +9,6 @@ package model;
  * @author dell
  */
 public class VitalSign {
-    
     private int pulse;
     private float bloodPressure;
     private float tempurature;
