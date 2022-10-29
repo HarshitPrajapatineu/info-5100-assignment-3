@@ -13,11 +13,39 @@ import java.util.Date;
 public class Encounter {
     
     private int encounterId;
+    private int doctorId;
+    private int personId;
+    private Date appointmentDate;
     private VitalSign vitalSign;
     private String diagnosis;
     private String prescription;
     private Date encounterDate;
 
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(int doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
+    public Date getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public void setAppointmentDate(Date appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
+
+    
     public int getEncounterId() {
         return encounterId;
     }
