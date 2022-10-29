@@ -10,4 +10,32 @@ package model;
  */
 public class VitalSign {
     
+    private int pulse;
+    private float bloodPressure;
+    private float tempurature;
+
+    public int getPulse() {
+        return pulse;
+    }
+
+    public void setPulse(int pulse) {
+        this.pulse = pulse;
+    }
+
+    public float getBloodPressure() {
+        return bloodPressure;
+    }
+
+    public void setBloodPressure(float bloodPressure) {
+        this.bloodPressure = bloodPressure;
+    }
+
+    public float getTempurature() {
+        return tempurature;
+    }
+
+    public void setTempurature(float tempurature) {
+        this.tempurature = tempurature;
+    }   
+    
 }
