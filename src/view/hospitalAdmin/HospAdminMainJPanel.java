@@ -7,6 +7,7 @@ package view.hospitalAdmin;
 import view.admin.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -19,11 +20,11 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessJPanel;
-    
-    public HospAdminMainJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    public HospAdminMainJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
-        
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**

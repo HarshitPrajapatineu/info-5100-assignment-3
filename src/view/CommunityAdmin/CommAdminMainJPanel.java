@@ -7,6 +7,7 @@ package view.CommunityAdmin;
 import view.admin.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -19,11 +20,12 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
      */
     
     JPanel userProcessJPanel;
-    
-    public CommAdminMainJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    public CommAdminMainJPanel(JPanel userProcessJPanel, SystemData sysData) {
+       
         initComponents();
-        
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**
