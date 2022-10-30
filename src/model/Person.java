@@ -5,6 +5,7 @@
 package model;
 
 import common.Enum;
+import java.util.Date;
 /**
  *
  * @author dell
@@ -13,12 +14,12 @@ public class Person {
     private String personId;
     private String FirstName;
     private String LastName;
-    private String dob;
-    private Enum.Gender gender;
+    private Date dob;
+    private int gender;
     private String phone;
     private String emailId;
     private Address address;
-    private Enum.UserRole userRole;
+    private int userRole;
 
     public String getPersonId() {
         return personId;
@@ -44,19 +45,19 @@ public class Person {
         this.LastName = LastName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
-    public Enum.Gender getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(Enum.Gender gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -84,11 +85,11 @@ public class Person {
         this.address = address;
     }
 
-    public Enum.UserRole getUserRole() {
+    public int getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Enum.UserRole userRole) {
+    public void setUserRole(int userRole) {
         this.userRole = userRole;
     }
     

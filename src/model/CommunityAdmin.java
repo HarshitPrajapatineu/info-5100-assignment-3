@@ -8,7 +8,7 @@ package model;
  *
  * @author dell
  */
-public class CommunityAdmin {
+public class CommunityAdmin extends Person {
     private int commId;
     private int commAdminId;
     private String communityAdmin;
