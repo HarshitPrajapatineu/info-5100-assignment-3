@@ -16,6 +16,7 @@ public class Doctor extends Person {
     private int empId;
     private String expertise;
     private int hospitalId;
+    private String doctorName;
 
     public int getEmpId() {
         return empId;
@@ -39,5 +40,13 @@ public class Doctor extends Person {
 
     public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 }
