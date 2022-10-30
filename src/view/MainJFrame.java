@@ -170,7 +170,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_adminJButtonActionPerformed
 
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
-        // TODO add your handling code here:
+        CommAdminMainJPanel commAdminMainJPanel = new CommAdminMainJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("CommAdminMainJPanel", commAdminMainJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_commAdminJButtonActionPerformed
 
     private void doctorJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorJButtonActionPerformed
@@ -181,7 +184,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_doctorJButtonActionPerformed
 
     private void hosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosAdminJButtonActionPerformed
-        // TODO add your handling code here:
+        HospAdminMainJPanel hospAdminMainJPanel = new HospAdminMainJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("HospAdminMainJPanel", hospAdminMainJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_hosAdminJButtonActionPerformed
 
     /**
