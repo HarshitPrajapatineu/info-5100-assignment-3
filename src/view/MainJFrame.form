@@ -64,13 +64,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="adminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="commAdminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hosAdminJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="guestUserJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="doctorJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="patientJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="adminJButton" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="commAdminJButton" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="guestUserJButton" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="doctorJButton" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="patientJButton" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hosAdminJButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -83,9 +83,9 @@
                       <Component id="adminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="commAdminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="hosAdminJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="hosAdminJButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="doctorJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="patientJButton" linkSize="2" min="-2" max="-2" attributes="0"/>
@@ -119,17 +119,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commAdminJButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="hosAdminJButton">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e3" green="e4" red="fd" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Hospital Admin"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hosAdminJButtonActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="guestUserJButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -156,6 +145,14 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Patient"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="hosAdminJButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hospital Admin"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hosAdminJButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
