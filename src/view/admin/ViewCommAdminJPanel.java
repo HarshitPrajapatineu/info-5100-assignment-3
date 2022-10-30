@@ -6,6 +6,9 @@ package view.admin;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Community;
+import model.CommunityAdmin;
+import model.SystemData;
 
 /**
  *
@@ -17,9 +20,14 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
      * Creates new form ViewHosAdminJPanel
      */
     JPanel userProcessJPanel;
-    public ViewCommAdminJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    
+    CommunityAdmin selectedCommunityAdmin;
+    Community selectedCommmunity;
+    public ViewCommAdminJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**
@@ -102,6 +110,11 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
         });
 
         editJButton.setText("Edit Details");
+        editJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editJButtonActionPerformed(evt);
+            }
+        });
 
         deleteJButton.setText("Delete");
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +406,10 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        // TODO add your handling code here:
+        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, false);
+        userProcessJPanel.add("AddCommunityAdminJPanel", addCommunityAdminJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void genderJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderJComboBoxActionPerformed
@@ -413,6 +429,13 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessJPanel.getLayout();
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
+        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, true);
+        userProcessJPanel.add("AddCommunityAdminJPanel", addCommunityAdminJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_editJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -449,4 +472,27 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton viewJButton;
     private javax.swing.JTable viewUserJTable;
     // End of variables declaration//GEN-END:variables
+    private void getDataInForm() {
+
+        // set data for community admin
+        firstNameJTextField.setText(selectedCommunityAdmin.getFirstName());
+        lastNameJTextField.setText(selectedCommunityAdmin.getLastName());
+        genderJComboBox.setSelectedIndex(selectedCommunityAdmin.getGender());
+        dobJDateChooser.setDate(selectedCommunityAdmin.getDob());
+        phoneJTextField.setText(selectedCommunityAdmin.getPhone());
+        emailJTextField.setText(selectedCommunityAdmin.getEmailId());
+        addressOneJTextField.setText(selectedCommunityAdmin.getAddress().getAddressOne());
+        addressTwoJTextField.setText(selectedCommunityAdmin.getAddress().getAddressTwo());
+        cityJComboBox.setSelectedIndex(selectedCommunityAdmin.getAddress().getCity());
+        postalCodeJTextField.setText(selectedCommunityAdmin.getAddress().getPostalCode());
+        
+        // set data for community
+//        communityNameJTextField.setText(selectedCommunity.getCommunityName());
+//        communityContactJTextField.setText(selectedCommunity.getPhone());
+//        communityAddressJTextField.setText(selectedCommunity.getAddress().getAddressOne() + ", " +
+//                selectedCommunity.getAddress().getAddressTwo()+ ", " +
+//                selectedCommunity.getAddress().getPostalCode());
+        
+    }
+
 }

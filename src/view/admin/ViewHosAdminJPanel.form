@@ -84,7 +84,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField1" max="32767" attributes="0"/>
+                                          <Component id="hospitalNameJTextField" max="32767" attributes="0"/>
                                           <Component id="cityJComboBox" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -121,7 +121,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel14" min="-2" pref="136" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField3" max="32767" attributes="0"/>
+                              <Component id="hospitalContactJTextField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -129,7 +129,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" pref="136" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField2" max="32767" attributes="0"/>
+                      <Component id="hospitalAddressJTextField" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -199,17 +199,19 @@
                   <Component id="cityJComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel12" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jTextField3" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="hospitalContactJTextField" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="hospitalNameJTextField" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField2" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hospitalAddressJTextField" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel13" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="71" max="32767" attributes="0"/>
@@ -494,7 +496,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="hospitalNameJTextField">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -504,7 +506,7 @@
         <Property name="text" type="java.lang.String" value="Hospital Name :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="hospitalAddressJTextField">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -514,7 +516,7 @@
         <Property name="text" type="java.lang.String" value="Address :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="hospitalContactJTextField">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>

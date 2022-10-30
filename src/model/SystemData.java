@@ -12,15 +12,15 @@ import java.util.ArrayList;
  */
 public class SystemData {
     
-    private ArrayList<City> cityList;
-    private ArrayList<String> cityDDList;
-    private CommunityAdminList communityAdminList;
-    private CommunityList communityList;
-    private HospitalAdminList hospitalAdminList;
-    private HospitalList hospitalList;
-    private DoctorList doctorList;
-    private PatientList patientList;
-    private EncounterList encounterList;
+    public ArrayList<City> cityList;
+    public ArrayList<String> cityDDList;
+    public ArrayList<CommunityAdmin> communityAdminList;
+    public ArrayList<Community> communityList;
+    public ArrayList<HospitalAdmin> hospitalAdminList;
+    public ArrayList<Hospital> hospitalList;
+    public ArrayList<Doctor> doctorList;
+    public ArrayList<Patient> patientList;
+    public ArrayList<Encounter> encounterList;
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -38,59 +38,59 @@ public class SystemData {
         this.cityDDList = cityDDList;
     }
 
-    public CommunityAdminList getCommunityAdminList() {
+    public ArrayList<CommunityAdmin> getCommunityAdminList() {
         return communityAdminList;
     }
 
-    public void setCommunityAdminList(CommunityAdminList communityAdminList) {
+    public void setCommunityAdminList(ArrayList<CommunityAdmin> communityAdminList) {
         this.communityAdminList = communityAdminList;
     }
 
-    public CommunityList getCommunityList() {
+    public ArrayList<Community> getCommunityList() {
         return communityList;
     }
 
-    public void setCommunityList(CommunityList communityList) {
+    public void setCommunityList(ArrayList<Community> communityList) {
         this.communityList = communityList;
     }
 
-    public HospitalAdminList getHospitalAdminList() {
+    public ArrayList<HospitalAdmin> getHospitalAdminList() {
         return hospitalAdminList;
     }
 
-    public void setHospitalAdminList(HospitalAdminList hospitalAdminList) {
+    public void setHospitalAdminList(ArrayList<HospitalAdmin> hospitalAdminList) {
         this.hospitalAdminList = hospitalAdminList;
     }
 
-    public HospitalList getHospitalList() {
+    public ArrayList<Hospital> getHospitalList() {
         return hospitalList;
     }
 
-    public void setHospitalList(HospitalList hospitalList) {
+    public void setHospitalList(ArrayList<Hospital> hospitalList) {
         this.hospitalList = hospitalList;
     }
 
-    public DoctorList getDoctorList() {
+    public ArrayList<Doctor> getDoctorList() {
         return doctorList;
     }
 
-    public void setDoctorList(DoctorList doctorList) {
+    public void setDoctorList(ArrayList<Doctor> doctorList) {
         this.doctorList = doctorList;
     }
 
-    public PatientList getPatientList() {
+    public ArrayList<Patient> getPatientList() {
         return patientList;
     }
 
-    public void setPatientList(PatientList patientList) {
+    public void setPatientList(ArrayList<Patient> patientList) {
         this.patientList = patientList;
     }
 
-    public EncounterList getEncounterList() {
+    public ArrayList<Encounter> getEncounterList() {
         return encounterList;
     }
 
-    public void setEncounterList(EncounterList encounterList) {
+    public void setEncounterList(ArrayList<Encounter> encounterList) {
         this.encounterList = encounterList;
     }
     
