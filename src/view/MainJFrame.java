@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import view.admin.AdminMainJPanel;
 import common.Enum;
 import java.util.Locale;
+import model.SystemData;
+import view.doctor.ViewDoctorJPanel;
 
 /**
  *
@@ -22,7 +24,7 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    
+    SystemData sysData = new SystemData();
     ArrayList<String> cityList = new ArrayList<String>();
     
     public MainJFrame() {
@@ -50,10 +52,10 @@ public class MainJFrame extends javax.swing.JFrame {
         userControlJPanel = new javax.swing.JPanel();
         adminJButton = new javax.swing.JButton();
         commAdminJButton = new javax.swing.JButton();
-        hosAdminJButton = new javax.swing.JButton();
         guestUserJButton = new javax.swing.JButton();
         doctorJButton = new javax.swing.JButton();
         patientJButton = new javax.swing.JButton();
+        hosAdminJButton = new javax.swing.JButton();
         userProcessJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +83,20 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        hosAdminJButton.setBackground(new java.awt.Color(253, 228, 227));
+        guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
+        guestUserJButton.setText("Guest User");
+
+        doctorJButton.setBackground(new java.awt.Color(253, 228, 227));
+        doctorJButton.setText("Doctor");
+        doctorJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorJButtonActionPerformed(evt);
+            }
+        });
+
+        patientJButton.setBackground(new java.awt.Color(253, 228, 227));
+        patientJButton.setText("Patient");
+
         hosAdminJButton.setText("Hospital Admin");
         hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,32 +104,23 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
-        guestUserJButton.setText("Guest User");
-
-        doctorJButton.setBackground(new java.awt.Color(253, 228, 227));
-        doctorJButton.setText("Doctor");
-
-        patientJButton.setBackground(new java.awt.Color(253, 228, 227));
-        patientJButton.setText("Patient");
-
         javax.swing.GroupLayout userControlJPanelLayout = new javax.swing.GroupLayout(userControlJPanel);
         userControlJPanel.setLayout(userControlJPanelLayout);
         userControlJPanelLayout.setHorizontalGroup(
             userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userControlJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adminJButton)
-                    .addComponent(commAdminJButton)
-                    .addComponent(hosAdminJButton)
-                    .addComponent(guestUserJButton)
-                    .addComponent(doctorJButton)
-                    .addComponent(patientJButton))
+                .addGroup(userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(adminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(commAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(guestUserJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(doctorJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(patientJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hosAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, hosAdminJButton, patientJButton});
+        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, patientJButton});
 
         userControlJPanelLayout.setVerticalGroup(
             userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +140,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
-        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, hosAdminJButton, patientJButton});
+        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, patientJButton});
 
         splitJPane.setLeftComponent(userControlJPanel);
 
@@ -157,7 +163,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminJButtonActionPerformed
-        AdminMainJPanel adminJPanel = new AdminMainJPanel(userProcessJPanel);
+        AdminMainJPanel adminJPanel = new AdminMainJPanel(userProcessJPanel, sysData);
         userProcessJPanel.add("AdminMainJPanel", adminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -166,6 +172,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void commAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminJButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_commAdminJButtonActionPerformed
+
+    private void doctorJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorJButtonActionPerformed
+        ViewDoctorJPanel doctorJPanel = new ViewDoctorJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("DoctorMainJPanel", doctorJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_doctorJButtonActionPerformed
 
     private void hosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosAdminJButtonActionPerformed
         // TODO add your handling code here:
@@ -210,6 +223,7 @@ public class MainJFrame extends javax.swing.JFrame {
         for (int i = 0; i < Enum.City.values().length; i++) {
             cityList.add(Enum.City.values()[i].toString().toLowerCase(Locale.getDefault()));
         }
+        sysData.setCityDDList(cityList);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
