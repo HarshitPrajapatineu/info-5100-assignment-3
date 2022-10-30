@@ -5,6 +5,7 @@
 package view.doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -16,9 +17,11 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
      * Creates new form ViewDoctorJPanel
      */
     JPanel userProcessJPanel;
-    public ViewDoctorJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    public ViewDoctorJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**

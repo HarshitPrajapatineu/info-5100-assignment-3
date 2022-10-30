@@ -11,15 +11,14 @@ import java.util.ArrayList;
  * @author dell
  */
 public class DoctorList {
-    private ArrayList<CommunityAdmin> communityAdminList;
+    private ArrayList<Doctor> docList;
 
-    public ArrayList<CommunityAdmin> getCommunityAdminList() {
-        return communityAdminList;
+    public ArrayList<Doctor> getDocList() {
+        return docList;
     }
 
-    public void setCommunityAdminList(ArrayList<CommunityAdmin> communityAdminList) {
-        this.communityAdminList = communityAdminList;
+    public void setDocList(ArrayList<Doctor> docList) {
+        this.docList = docList;
     }
-    
     
 }

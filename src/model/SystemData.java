@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class SystemData {
     
     private ArrayList<City> cityList;
+    private ArrayList<String> cityDDList;
     private CommunityAdminList communityAdminList;
     private CommunityList communityList;
     private HospitalAdminList hospitalAdminList;
@@ -27,6 +28,14 @@ public class SystemData {
 
     public void setCityList(ArrayList<City> cityList) {
         this.cityList = cityList;
+    }
+
+    public ArrayList<String> getCityDDList() {
+        return cityDDList;
+    }
+
+    public void setCityDDList(ArrayList<String> cityDDList) {
+        this.cityDDList = cityDDList;
     }
 
     public CommunityAdminList getCommunityAdminList() {
@@ -84,5 +93,7 @@ public class SystemData {
     public void setEncounterList(EncounterList encounterList) {
         this.encounterList = encounterList;
     }
+    
+    
     
 }
