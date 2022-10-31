@@ -9,7 +9,7 @@ public class Address {
     
     private String addressOne;
     private String addressTwo;
-    private Enum.City city;
+    private int city;
     private String postalCode;
     private String communityName;
 
@@ -37,11 +37,11 @@ public class Address {
         this.addressTwo = addressTwo;
     }
 
-    public Enum.City getCity() {
+    public int getCity() {
         return city;
     }
 
-    public void setCity(Enum.City city) {
+    public void setCity(int city) {
         this.city = city;
     }
 

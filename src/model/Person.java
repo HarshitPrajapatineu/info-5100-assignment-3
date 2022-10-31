@@ -5,58 +5,59 @@
 package model;
 
 import common.Enum;
+import java.util.Date;
 /**
  *
  * @author dell
  */
 public class Person {
-    private String personId;
-    private String firstName;
-    private String lastName;
-    private String dob;
-    private Enum.Gender gender;
+    private int personId;
+    private String FirstName;
+    private String LastName;
+    private Date dob;
+    private int gender;
     private String phone;
     private String emailId;
     private Address address;
-    private Enum.UserRole userRole;
+    private int userRole;
 
-    public String getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
-    public void setPersonId(String personId) {
+    public void setPersonId(int personId) {
         this.personId = personId;
     }
 
     public String getFirstName() {
-        return firstName;
+        return FirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
-    public Enum.Gender getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(Enum.Gender gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -84,11 +85,11 @@ public class Person {
         this.address = address;
     }
 
-    public Enum.UserRole getUserRole() {
+    public int getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Enum.UserRole userRole) {
+    public void setUserRole(int userRole) {
         this.userRole = userRole;
     }
     

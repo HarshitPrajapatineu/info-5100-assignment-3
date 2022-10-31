@@ -8,9 +8,10 @@ package model;
  *
  * @author dell
  */
-public class CommunityAdmin extends Person{
+public class CommunityAdmin extends Person {
     private int commId;
     private int commAdminId;
+    private String communityAdmin;
 
     public int getCommId() {
         return commId;
@@ -26,6 +27,14 @@ public class CommunityAdmin extends Person{
 
     public void setCommAdminId(int commAdminId) {
         this.commAdminId = commAdminId;
+    }
+
+    public String getCommunityAdmin() {
+        return communityAdmin;
+    }
+
+    public void setCommunityAdmin(String communityAdmin) {
+        this.communityAdmin = communityAdmin;
     }
     
 }

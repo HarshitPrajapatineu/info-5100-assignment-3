@@ -9,10 +9,19 @@ package model;
  * @author dell
  */
 public class Hospital {
+
     private int hospitalId;
     private String hospitalName;
     private Address address;
     private String phone;
+
+    public int getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(int hospitalId) {
+        this.hospitalId = hospitalId;
+    }
 
     public String getHospitalName() {
         return hospitalName;
