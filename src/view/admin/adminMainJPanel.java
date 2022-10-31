@@ -199,7 +199,10 @@ public class AdminMainJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageHosAdminJButtonActionPerformed
 
     private void manageCommAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCommAdminJButtonActionPerformed
-        // TODO add your handling code here:
+        ViewCommAdminJPanel viewCommAdminJPanel = new ViewCommAdminJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("ViewCommAdminJPanel", viewCommAdminJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_manageCommAdminJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

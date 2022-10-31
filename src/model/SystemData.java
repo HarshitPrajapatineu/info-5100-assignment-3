@@ -94,6 +94,24 @@ public class SystemData {
         this.encounterList = encounterList;
     }
     
+    public Hospital getHospitalById(int hospitalId) {
+        return hospitalList.stream().
+                filter(a -> a.getHospitalId() == (hospitalId)).findAny().orElse(null);
+    }
     
+    public HospitalAdmin getHospitalAdminById(int hospitalAdminId) {
+        return hospitalAdminList.stream().
+                filter(a -> a.getPersonId() == (hospitalAdminId)).findAny().orElse(null);
+    }
+    
+    public CommunityAdmin getCommunityAdminById(int communityAdminId) {
+        return communityAdminList.stream().
+                filter(a -> a.getPersonId() == (communityAdminId)).findAny().orElse(null);
+    }
+    
+    public Community getCommunityById(int communityId) {
+        return communityList.stream().
+                filter(a -> a.getCommId() == (communityId)).findAny().orElse(null);
+    }
     
 }
