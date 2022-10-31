@@ -13,7 +13,7 @@ public class Community {
     
     private int commId;
     private String commName;
-    private Enum.City city;
+    private int city;
     private String postalCode;
 
     public int getCommId() {
@@ -32,11 +32,11 @@ public class Community {
         this.commName = commName;
     }
 
-    public Enum.City getCity() {
+    public int getCity() {
         return city;
     }
 
-    public void setCity(Enum.City city) {
+    public void setCity(int city) {
         this.city = city;
     }
 

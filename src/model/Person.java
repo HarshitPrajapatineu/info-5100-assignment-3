@@ -11,7 +11,7 @@ import java.util.Date;
  * @author dell
  */
 public class Person {
-    private String personId;
+    private int personId;
     private String FirstName;
     private String LastName;
     private Date dob;
@@ -21,11 +21,11 @@ public class Person {
     private Address address;
     private int userRole;
 
-    public String getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
-    public void setPersonId(String personId) {
+    public void setPersonId(int personId) {
         this.personId = personId;
     }
 
