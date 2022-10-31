@@ -6,6 +6,7 @@ package view.patient;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -17,9 +18,11 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
      * Creates new form EncounterHistoryJPanel
      */
     JPanel userProcessJPanel;
-    public EncounterHistoryJPanel() {
+    SystemData sysData;
+    public EncounterHistoryJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**

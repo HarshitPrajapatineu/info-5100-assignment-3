@@ -5,6 +5,8 @@
 package view.doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Patient;
+import model.SystemData;
 
 /**
  *
@@ -16,9 +18,12 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
      * Creates new form ViewDoctorJPanel
      */
     JPanel userProcessJPanel;
-    public ViewVitalSignJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    Patient patient;
+    public ViewVitalSignJPanel(JPanel userProcessJPanel, SystemData sysData, Patient patient) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**
@@ -61,7 +66,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doctor's Console");
+        jLabel1.setText("Vital Signs");
 
         backJButton.setBackground(new java.awt.Color(253, 228, 227));
         backJButton.setText("<< Back");
@@ -232,7 +237,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField11ActionPerformed
 
 

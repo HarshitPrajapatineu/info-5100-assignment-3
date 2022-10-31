@@ -6,6 +6,7 @@ package view.patient;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -17,9 +18,11 @@ public class PatientJPanel extends javax.swing.JPanel {
      * Creates new form PatientJPanel
      */
     JPanel userProcessJPanel;
-    public PatientJPanel() {
+    SystemData sysData;
+    public PatientJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**
@@ -62,6 +65,11 @@ public class PatientJPanel extends javax.swing.JPanel {
 
         jEncounterButton.setBackground(new java.awt.Color(255, 255, 255));
         jEncounterButton.setText("View Encounter History");
+        jEncounterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEncounterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,8 +110,18 @@ public class PatientJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void jAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAppointmentButtonActionPerformed
-        
+        PatientAppointmentJPanel patientAppointmentJPanel = new PatientAppointmentJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("PatientAppointmentJPanel", patientAppointmentJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
     }//GEN-LAST:event_jAppointmentButtonActionPerformed
+
+    private void jEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncounterButtonActionPerformed
+        EncounterHistoryJPanel encounterHistoryJPanel = new EncounterHistoryJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("EncounterHistoryJPanel", encounterHistoryJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_jEncounterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

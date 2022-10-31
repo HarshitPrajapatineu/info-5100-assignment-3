@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view.patient;
-
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.SystemData;
 
 /**
  *
@@ -17,9 +17,11 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
      * Creates new form PatientAppointmentJPanel
      */
     JPanel userProcessJPanel;
-    public PatientAppointmentJPanel() {
+    SystemData sysData;
+    public PatientAppointmentJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
     }
 
     /**

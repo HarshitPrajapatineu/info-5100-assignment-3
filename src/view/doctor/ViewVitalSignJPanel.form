@@ -149,7 +149,7 @@
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Doctor&apos;s Console"/>
+        <Property name="text" type="java.lang.String" value="Vital Signs"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backJButton">
