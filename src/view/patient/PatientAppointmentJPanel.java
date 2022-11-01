@@ -67,7 +67,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Patient's appointment booking console");
+        jLabel1.setText("Appointment booking");
 
         backJButton.setBackground(new java.awt.Color(253, 228, 227));
         backJButton.setText("<< Back");
@@ -162,7 +162,9 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
                         .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
                         .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel1)))
                 .addGap(55, 55, 55))
             .addComponent(jScrollPane1)
             .addComponent(jScrollPane3)

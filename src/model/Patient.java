@@ -12,12 +12,11 @@ public class Patient extends Person {
     
     public static int len = 0;
     public Patient(){
-        patientId = ++len;
+        patientId = len++;
     }
     
     private int patientId;
     private int hospitalId;
-    private String statusOfAppointment;
 
     public int getPatientId() {
         return patientId;
@@ -34,14 +33,4 @@ public class Patient extends Person {
     public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
     }
-
-    public String getStatusOfAppointment() {
-        return statusOfAppointment;
-    }
-
-    public void setStatusOfAppointment(String statusOfAppointment) {
-        this.statusOfAppointment = statusOfAppointment;
-    }
-    
-    
 }
