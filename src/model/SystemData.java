@@ -169,8 +169,9 @@ public class SystemData {
     public ArrayList<Encounter> getEncounterListByDocId(int docId) {
         if(encounterList != null)
         {
-            var list = encounterList.stream().filter(a -> a.getDoctorId()== (docId)).toList();
-            return (ArrayList<Encounter>) list;
+            ArrayList<Encounter> list = (ArrayList<Encounter>) encounterList.stream().
+                    filter(a -> a.getDoctorId() == (docId)).collect(toList());
+            return (ArrayList<Encounter>)list;
         } else {
             return encounterList;
         }
