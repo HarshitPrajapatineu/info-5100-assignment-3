@@ -146,6 +146,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) jPatientsTable.getModel();
                 Patient selectedPatient = (Patient)model.getValueAt(rowIndex, 0);
 
+                 
                 ViewVitalSignJPanel viewVitalSignJPanel = new ViewVitalSignJPanel(userProcessJPanel, sysData, selectedPatient);
                 userProcessJPanel.add("ViewVitalSignJPanel", viewVitalSignJPanel);
                 CardLayout layout = (CardLayout)userProcessJPanel.getLayout();

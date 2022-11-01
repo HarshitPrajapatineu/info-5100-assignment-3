@@ -204,7 +204,6 @@ public class PatientRegisterationJPanel extends javax.swing.JPanel {
         newPatient.setPhone(mobNum);
         patientList.add(newPatient);
 
-        JOptionPane.showMessageDialog(this, "You are registered successfully");
         JOptionPane.showMessageDialog(this, "You are registered successfully! Your patient ID is "+newPatient.getPatientId());
     }//GEN-LAST:event_jSaveButtonActionPerformed
 
