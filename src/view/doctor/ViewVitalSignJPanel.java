@@ -5,6 +5,9 @@
 package view.doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Encounter;
+import model.Patient;
+import model.SystemData;
 
 /**
  *
@@ -16,9 +19,16 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
      * Creates new form ViewDoctorJPanel
      */
     JPanel userProcessJPanel;
-    public ViewVitalSignJPanel(JPanel userProcessJPanel) {
+    SystemData sysData;
+    Patient patient;
+    
+    public ViewVitalSignJPanel(JPanel userProcessJPanel, SystemData sysData, Patient patient) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
+        Encounter encounter = sysData.getVitalSignsByPatientId(patient.getPatientId());
+        
+        Object row[] = {encounter.getPatientId(), encounter.getVitalSign().getTempurature(), encounter.getVitalSign().getBloodPressure(),};
     }
 
     /**
@@ -61,7 +71,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doctor's Console");
+        jLabel1.setText("Vital Signs");
 
         backJButton.setBackground(new java.awt.Color(253, 228, 227));
         backJButton.setText("<< Back");
@@ -72,7 +82,6 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel2.setText("List of patients");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,12 +141,6 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,8 +175,13 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                                     .addComponent(jTextField8)
                                     .addComponent(jTextField9)
                                     .addComponent(jTextField10)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(backJButton)
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +228,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,7 +242,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField11ActionPerformed
 
 

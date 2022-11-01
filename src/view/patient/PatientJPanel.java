@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view.patient;
-
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Patient;
+import model.SystemData;
 
 /**
  *
@@ -17,9 +20,13 @@ public class PatientJPanel extends javax.swing.JPanel {
      * Creates new form PatientJPanel
      */
     JPanel userProcessJPanel;
-    public PatientJPanel() {
+    SystemData sysData;
+    ArrayList<Patient> patientList;
+    public PatientJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
+        this.patientList = sysData.patientList;
     }
 
     /**
@@ -33,6 +40,16 @@ public class PatientJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        jAppointmentButton = new javax.swing.JButton();
+        jEncounterButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPatientIdSearchField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jRegisterButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(620, 540));
+        setMinimumSize(new java.awt.Dimension(620, 540));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -46,16 +63,61 @@ public class PatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        jAppointmentButton.setBackground(new java.awt.Color(255, 255, 255));
+        jAppointmentButton.setText("Book an appointment");
+        jAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAppointmentButtonActionPerformed(evt);
+            }
+        });
+
+        jEncounterButton.setBackground(new java.awt.Color(255, 255, 255));
+        jEncounterButton.setText("View Encounter History");
+        jEncounterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEncounterButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Patient ID *");
+
+        jLabel3.setText("* If you do not have Patient ID then please first register yourself");
+
+        jRegisterButton.setText("Register");
+        jRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRegisterButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(backJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(147, 147, 147))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPatientIdSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(139, 139, 139))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jRegisterButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +126,19 @@ public class PatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backJButton))
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jPatientIdSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(jRegisterButton)
+                .addGap(99, 99, 99)
+                .addComponent(jLabel3)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -74,9 +148,57 @@ public class PatientJPanel extends javax.swing.JPanel {
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void jAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAppointmentButtonActionPerformed
+        if (jPatientIdSearchField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Enter yout patient Id please. If you do not have a patient ID, please register yourself by clicking on the button below.");
+        }
+        else{
+            
+            int patientId = Integer.parseInt(jPatientIdSearchField.getText());
+            if (!sysData.isPatientExists(patientId)){
+                JOptionPane.showMessageDialog(this, "Please enter a valid patient ID");
+            }
+            else{      
+                PatientAppointmentJPanel patientAppointmentJPanel = new PatientAppointmentJPanel(userProcessJPanel, sysData, patientId);
+                userProcessJPanel.add("PatientAppointmentJPanel", patientAppointmentJPanel);
+                CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+                layout.next(userProcessJPanel);
+            }
+        }
+    }//GEN-LAST:event_jAppointmentButtonActionPerformed
+
+    private void jEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncounterButtonActionPerformed
+        if (jPatientIdSearchField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Enter yout Patient Id please. If you do not have a patient ID, please register yourself by clicking on the button below.");
+        }
+        else{
+            int patientId = Integer.parseInt(jPatientIdSearchField.getText());
+            if (!sysData.isPatientExists(patientId)){
+                JOptionPane.showMessageDialog(this, "Please enter a valid patient ID");
+            }
+            EncounterHistoryJPanel encounterHistoryJPanel = new EncounterHistoryJPanel(userProcessJPanel, sysData, patientId);
+            userProcessJPanel.add("EncounterHistoryJPanel", encounterHistoryJPanel);
+            CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+            layout.next(userProcessJPanel);
+        }
+    }//GEN-LAST:event_jEncounterButtonActionPerformed
+
+    private void jRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterButtonActionPerformed
+        PatientRegisterationJPanel patientRegisterationJPanel = new PatientRegisterationJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("PatientRegisterationJPanel", patientRegisterationJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_jRegisterButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton jAppointmentButton;
+    private javax.swing.JButton jEncounterButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jPatientIdSearchField;
+    private javax.swing.JButton jRegisterButton;
     // End of variables declaration//GEN-END:variables
 }

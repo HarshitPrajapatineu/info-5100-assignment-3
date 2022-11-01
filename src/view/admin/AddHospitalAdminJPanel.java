@@ -40,6 +40,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
         this.userProcessJPanel = userProcessJPanel;
         setLabelOnEdit(isEditOn);
         prepCityDDList();
+        renderView();
     }
 
     /**
@@ -312,6 +313,11 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         resetJButton.setText("Reset");
+        resetJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetJButtonActionPerformed(evt);
+            }
+        });
 
         saveJButton.setText("Save");
         saveJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -499,6 +505,10 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_communityNameJTextFieldActionPerformed
 
+    private void resetJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressOneJTextField;
@@ -604,4 +614,21 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
     private boolean validateData() {
         return false;
     }
+    private void renderView()
+    {
+        if (selectedHospitalAdmin != null) {
+            firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
+            lastNameJTextField.setText(selectedHospitalAdmin.getLastName());
+            genderJComboBox.setSelectedIndex(selectedHospitalAdmin.getGender());
+            dobJDateChooser.setDate(selectedHospitalAdmin.getDob());
+            phoneJTextField.setText(selectedHospitalAdmin.getPhone());
+            emailJTextField.setText(selectedHospitalAdmin.getEmailId());
+            addressOneJTextField.setText(selectedHospitalAdmin.getAddress().getAddressOne());
+            addressTwoJTextField.setText(selectedHospitalAdmin.getAddress().getAddressTwo());
+            cityJComboBox.setSelectedIndex(selectedHospitalAdmin.getAddress().getCity());
+            postalCodeJTextField.setText(selectedHospitalAdmin.getAddress().getPostalCode());
+            hospitalIdJTextField.setText(String.valueOf(selectedHospitalAdmin.getHospitalId()));
+        }
+    }
+    
 }
