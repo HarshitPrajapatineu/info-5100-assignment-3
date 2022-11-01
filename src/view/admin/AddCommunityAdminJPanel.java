@@ -5,6 +5,7 @@
 package view.admin;
 
 import java.awt.CardLayout;
+import java.util.regex.Pattern;
 import javax.swing.JPanel;
 import model.Address;
 import model.Community;
@@ -22,6 +23,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessJPanel;
     SystemData sysData;
+    private static final String EMPTY_STRING = "";
     String addCommunityAdminHeadingLabel = "Add Community Admin Detail";
     String editCommunityAdminHeadingLabel = "Edit Community Admin Detail";
     String editCommunityAdminInsLabel = "*Edit Community Admin detail here.";
@@ -30,6 +32,9 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     Community selectedCommunity; 
     boolean isEditOn = false;
     boolean communityAssociationStatus = false;
+    
+    private String validationMsg = "";
+    private boolean validationStatus = false;
     
     public AddCommunityAdminJPanel(JPanel userProcessJPanel, SystemData sysData, CommunityAdmin selectedCommunityAdmin) {
         initComponents();
@@ -82,7 +87,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
         communityPostalCodeJTextField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        commCommunityNameJTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         communityContactJTextField = new javax.swing.JTextField();
@@ -91,7 +96,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         resetJButton = new javax.swing.JButton();
         saveJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        validationJLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
@@ -346,7 +351,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(commCommunityNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -356,7 +361,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cityCommJComboBox, communityContactJTextField, communityPostalCodeJTextField, jTextField1});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cityCommJComboBox, commCommunityNameJTextField, communityContactJTextField, communityPostalCodeJTextField});
 
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +371,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(commCommunityNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(communityContactJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,7 +387,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {communityContactJTextField, jLabel16});
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel15, jTextField1});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {commCommunityNameJTextField, jLabel15});
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -418,8 +423,8 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("* validation label");
+        validationJLabel.setForeground(new java.awt.Color(255, 0, 0));
+        validationJLabel.setText("* validation label");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -429,7 +434,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(validationJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -439,7 +444,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(validationJLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -506,12 +511,14 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_communityNameJTextFieldActionPerformed
 
     private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
-        //        if (validateData()) {
+//        if (validateData()) {
+//            validationMsg = "";
+//            validationJLabel.setText(validationMsg);
             saveData();
-            //        }
-        //        else{
-            //
-            //        }
+//        }
+//        else {
+//            validationJLabel.setText(validationMsg);
+//        }
     }//GEN-LAST:event_saveJButtonActionPerformed
 
 
@@ -521,6 +528,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton2;
     private javax.swing.JComboBox<String> cityCommJComboBox;
     private javax.swing.JComboBox<String> cityJComboBox;
+    private javax.swing.JTextField commCommunityNameJTextField;
     private javax.swing.JLabel communityAdminInsJLabel;
     private javax.swing.JTextField communityContactJTextField;
     private javax.swing.JLabel communityInsJLabel;
@@ -530,7 +538,6 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField emailJTextField;
     private javax.swing.JTextField firstNameJTextField;
     private javax.swing.JComboBox<String> genderJComboBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -551,13 +558,13 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField lastNameJTextField;
     private javax.swing.JLabel panelHeadingJLabel;
     private javax.swing.JTextField phoneJTextField;
     private javax.swing.JTextField postalCodeJTextField;
     private javax.swing.JButton resetJButton;
     private javax.swing.JButton saveJButton;
+    private javax.swing.JLabel validationJLabel;
     // End of variables declaration//GEN-END:variables
     private void setLabelOnEdit(boolean isEditOn) {
         if(isEditOn) {
@@ -602,7 +609,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             
             // Add Community
             Community newComm = new Community();
-            newComm.setCommName(communityNameJTextField.getText());
+            newComm.setCommName(commCommunityNameJTextField.getText());
             newComm.setPostalCode(communityPostalCodeJTextField.getText());
             newComm.setContact(communityContactJTextField.getText());
             newComm.setCity(cityCommJComboBox.getSelectedIndex());
@@ -633,7 +640,9 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     }
 
     private boolean validateData() {
-        return false;
+        boolean val = validateFirstName() && validateLastName() && validatePostalCode() &&
+                validatePhone() && validateEmail();
+        return val;
     }
     private void renderView()
     {
@@ -657,5 +666,81 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             postalCodeJTextField.setText(selectedCommunity.getPostalCode());
 
         }
+    }
+    
+    private boolean validateFirstName() {
+        boolean status = false;
+        if(firstNameJTextField.getText().trim() != null && !EMPTY_STRING.equals(firstNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter name";
+        }
+        return status;
+    }
+    
+    private boolean validateLastName() {
+        boolean status = false;
+        if(lastNameJTextField.getText().trim() != null && !EMPTY_STRING.equals(lastNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter name";
+        }
+        return status;
+    }
+
+    private boolean validatePostalCode() {
+        boolean status = false;
+        if(postalCodeJTextField.getText() != null && !EMPTY_STRING.equals(postalCodeJTextField.getText().trim())) {
+            if (Pattern.matches("^[\\d\\w]{6}$", postalCodeJTextField.getText()) &&
+                    Integer.parseInt(postalCodeJTextField.getText()) > 16){
+                status = true;
+                validationMsg = "";
+            } else {
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid age";
+            }
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter age";
+        }
+        return status;
+    }
+
+    
+
+    
+
+    
+
+    private boolean validatePhone() {
+        boolean status = false;
+        if(phoneJTextField.getText() != null && !EMPTY_STRING.equals(phoneJTextField.getText().trim())) {
+            if(Pattern.matches("^(\\d{3}[- .]?){2}\\d{4}$", phoneJTextField.getText())) {
+                status = true;
+                validationMsg = "";
+            } else {
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid phone";
+            }
+            
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter phone";
+        }
+        return status;
+    }
+
+    private boolean validateEmail() {
+        boolean status = false;
+        if(emailJTextField.getText() != null && !EMPTY_STRING.equals(emailJTextField.getText().trim())) {
+            if(Pattern.matches("^[a-zA-Z0-9._%+]+@[a-zA-Z0-9]+.[A-Za-z]+$", emailJTextField.getText())) {
+                status = true;
+                validationMsg = "";
+            } else {
+                status = false;
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid email";
+            }
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter email";
+        }
+        return status;
     }
 }
