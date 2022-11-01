@@ -13,7 +13,7 @@ import java.util.Date;
 public class Encounter {
 
     public Encounter() {
-        encounterId = getPersonId();;
+        encounterId = getPatientId();
     }
     
     private int encounterId;
@@ -88,6 +88,4 @@ public class Encounter {
     public void setEncounterDate(Date encounterDate) {
         this.encounterDate = encounterDate;
     }
-    
-    
 }

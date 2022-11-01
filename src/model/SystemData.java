@@ -22,6 +22,7 @@ public class SystemData {
     public ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
     public ArrayList<Patient> patientList = new ArrayList<Patient>();
     public ArrayList<Encounter> encounterList = new ArrayList<Encounter>();
+    public ArrayList<VitalSign> vitalSignList = new ArrayList<VitalSign>();
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -119,6 +120,19 @@ public class SystemData {
         return communityList != null ? communityList.stream().
                 filter(a -> a.getCommId() == (communityId)).findAny().orElse(null) : null;
     }
+    public Doctor getDoctorByHospitalId(int hospId){
+        return doctorList.stream().filter(a -> a.getHospitalId() == (hospId)).findAny().orElse(null);
+    }
     
+    public Encounter getEncounterByPatientId(int patientId){
+        return encounterList.stream().filter(a -> a.getPatientId() == (patientId)).findAny().orElse(null);
+    }
     
+    public Hospital getHospitalByCommId(int commId){
+        return hospitalList.stream().filter(a -> a.getCommId()== (commId)).findAny().orElse(null);
+    }
+    
+    public Encounter getVitalSignsByPatientId(int patientId){
+        return encounterList.stream().filter(a -> a.getPatientId()== (patientId)).findAny().orElse(null);
+    }
 }

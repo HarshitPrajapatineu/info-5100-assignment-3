@@ -38,6 +38,10 @@ public class PatientJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jAppointmentButton = new javax.swing.JButton();
         jEncounterButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPatientIdTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jRegisterButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
@@ -71,6 +75,17 @@ public class PatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Patient ID *");
+
+        jLabel3.setText("* If you do not have Patient ID then please first register yourself");
+
+        jRegisterButton.setText("Register");
+        jRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRegisterButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,10 +98,22 @@ public class PatientJPanel extends javax.swing.JPanel {
                 .addGap(147, 147, 147))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPatientIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(139, 139, 139))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jRegisterButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,11 +122,19 @@ public class PatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backJButton))
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jPatientIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEncounterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(jRegisterButton)
+                .addGap(99, 99, 99)
+                .addComponent(jLabel3)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,11 +158,22 @@ public class PatientJPanel extends javax.swing.JPanel {
         layout.next(userProcessJPanel);
     }//GEN-LAST:event_jEncounterButtonActionPerformed
 
+    private void jRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterButtonActionPerformed
+        PatientRegisterationJPanel patientRegisterationJPanel = new PatientRegisterationJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("PatientRegisterationJPanel", patientRegisterationJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_jRegisterButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton jAppointmentButton;
     private javax.swing.JButton jEncounterButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jPatientIdTextField;
+    private javax.swing.JButton jRegisterButton;
     // End of variables declaration//GEN-END:variables
 }

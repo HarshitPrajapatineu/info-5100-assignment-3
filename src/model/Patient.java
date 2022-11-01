@@ -11,6 +11,12 @@ import java.time.LocalDate;
  * @author dell
  */
 public class Patient extends Person {
+    
+    public static int len = 0;
+    public Patient(){
+        patientId = ++len;
+    }
+    
     private int patientId;
     private int hospitalId;
     private LocalDate date;

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Community;
 import model.CommunityList;
+import model.Doctor;
 import model.Hospital;
 import model.SystemData;
 
@@ -101,6 +102,11 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jHospitalTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jHospitalTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jHospitalTable);
@@ -238,6 +244,17 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jSearchButtonActionPerformed
 
+    private void jHospitalTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHospitalTableMouseClicked
+        int rowIndex = jHospitalTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jHospitalTable.getModel();
+        Hospital selectedHospital = (Hospital)model.getValueAt(rowIndex, 0);
+        
+        Doctor doctor = sysData.getDoctorByHospitalId(selectedHospital.getHospitalId());
+        
+        Object row[] = {doctor.getDoctorName(), doctor.getExpertise()};
+        DefaultTableModel hospModel = (DefaultTableModel) jDoctorTable.getModel();
+        hospModel.addRow(row);
+    }//GEN-LAST:event_jHospitalTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

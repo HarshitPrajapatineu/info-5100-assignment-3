@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author dell
  */
 public class PatientList {
-    private ArrayList<Patient> patientList;
+    private ArrayList<Patient> patientList = new ArrayList<Patient>();
 
     public ArrayList<Patient> getPatientList() {
         return patientList;
@@ -19,4 +19,5 @@ public class PatientList {
     public void setPatientList(ArrayList<Patient> patientList) {
         this.patientList = patientList;
     }
+  
 }
