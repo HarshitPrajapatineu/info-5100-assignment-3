@@ -39,6 +39,11 @@ public class Hospital {
         this.address = address;
     }
 
+    
+    
+
+    
+
     public String getPhone() {
         return phone;
     }
