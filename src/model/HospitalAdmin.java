@@ -9,6 +9,7 @@ package model;
  * @author dell
  */
 public class HospitalAdmin extends Person{
+        
     private int hospitalId;
 
     public int getHospitalId() {

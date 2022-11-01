@@ -178,6 +178,9 @@
           <Dimension value="[53, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchJButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="searchJTextField">
     </Component>
@@ -547,7 +550,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hospital Contact :"/>
+            <Property name="text" type="java.lang.String" value="Community Contact :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="hospitalContactJTextField">
