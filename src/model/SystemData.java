@@ -21,6 +21,7 @@ public class SystemData {
     public ArrayList<Doctor> doctorList;
     public ArrayList<Patient> patientList;
     public ArrayList<Encounter> encounterList;
+    public ArrayList<VitalSign> vitalSignList;
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -96,22 +97,33 @@ public class SystemData {
     
     public Hospital getHospitalById(int hospitalId) {
         return hospitalList.stream().
-                filter(a -> a.getHospitalId() == (hospitalId)).findAny().orElse(null);
+            filter(a -> a.getHospitalId() == (hospitalId)).findAny().orElse(null);
     }
     
     public HospitalAdmin getHospitalAdminById(int hospitalAdminId) {
         return hospitalAdminList.stream().
-                filter(a -> a.getPersonId() == (hospitalAdminId)).findAny().orElse(null);
+            filter(a -> a.getPersonId() == (hospitalAdminId)).findAny().orElse(null);
     }
     
     public CommunityAdmin getCommunityAdminById(int communityAdminId) {
         return communityAdminList.stream().
-                filter(a -> a.getPersonId() == (communityAdminId)).findAny().orElse(null);
+            filter(a -> a.getPersonId() == (communityAdminId)).findAny().orElse(null);
     }
     
     public Community getCommunityById(int communityId) {
         return communityList.stream().
-                filter(a -> a.getCommId() == (communityId)).findAny().orElse(null);
+            filter(a -> a.getCommId() == (communityId)).findAny().orElse(null);
     }
     
+    public Encounter getVitalSignsByPatientId(int patientId){
+        return encounterList.stream().filter(a -> a.getPatientId() == (patientId)).findAny().orElse(null);
+    }
+    
+    public Hospital getHospitalByCommId(int commId){
+        return hospitalList.stream().filter(a -> a.getCommId() == (commId)).findAny().orElse(null);
+    }
+    
+    public Doctor getDoctorByHospitalId(int hospId){
+        return doctorList.stream().filter(a -> a.getHospitalId() == (hospId)).findAny().orElse(null);
+    }
 }

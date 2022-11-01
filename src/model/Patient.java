@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author dell
@@ -11,6 +13,9 @@ package model;
 public class Patient extends Person {
     private int patientId;
     private int hospitalId;
+    private LocalDate date;
+    private String statusOfAppointment;
+    private String patientIssue;
 
     public int getPatientId() {
         return patientId;
@@ -27,5 +32,30 @@ public class Patient extends Person {
     public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getPatientIssue() {
+        return patientIssue;
+    }
+
+    public void setPatientIssue(String patientIssue) {
+        this.patientIssue = patientIssue;
+    }
+
+    public String getStatusOfAppointment() {
+        return statusOfAppointment;
+    }
+
+    public void setStatusOfAppointment(String statusOfAppointment) {
+        this.statusOfAppointment = statusOfAppointment;
+    }
+    
     
 }

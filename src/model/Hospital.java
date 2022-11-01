@@ -11,6 +11,7 @@ package model;
 public class Hospital {
 
     private int hospitalId;
+    private int commId;
     private String hospitalName;
     private Address address;
     private String phone;
@@ -45,5 +46,14 @@ public class Hospital {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }    
+    }     
+
+    public int getCommId() {
+        return commId;
+    }
+
+    public void setCommId(int commId) {
+        this.commId = commId;
+    }
+    
 }

@@ -68,9 +68,17 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient ID", "Name", "Date", "Time"
+                "Patient ID", "Name", "Date", "Status of appointment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jPatientsTable);
 
         viewDetailsjButton.setText("View details");

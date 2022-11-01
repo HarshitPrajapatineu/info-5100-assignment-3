@@ -5,6 +5,7 @@
 package view.doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Encounter;
 import model.Patient;
 import model.SystemData;
 
@@ -20,10 +21,14 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     JPanel userProcessJPanel;
     SystemData sysData;
     Patient patient;
+    
     public ViewVitalSignJPanel(JPanel userProcessJPanel, SystemData sysData, Patient patient) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
         this.sysData = sysData;
+        Encounter encounter = sysData.getVitalSignsByPatientId(patient.getPatientId());
+        
+        Object row[] = {encounter.getPatientId(), encounter.getVitalSign().getTempurature(), encounter.getVitalSign().getBloodPressure(),};
     }
 
     /**
