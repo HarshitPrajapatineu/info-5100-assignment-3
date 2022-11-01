@@ -5,12 +5,10 @@
 package view.patient;
 import java.awt.CardLayout;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterList;
-import model.Patient;
 import model.PatientList;
 import model.SystemData;
 
@@ -28,11 +26,28 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
     EncounterList encounterList;
     PatientList patientList;
     int patientId;
+    
     public EncounterHistoryJPanel(JPanel userProcessJPanel, SystemData sysData, int patientId) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
         this.sysData = sysData;
         this.patientId = patientId;
+        
+        ArrayList<Encounter> encList = sysData.getEncounterListByPatientId(patientId);
+        
+        DefaultTableModel dtm = (DefaultTableModel) jEncounterHistoryTable.getModel();
+        dtm.setRowCount(0);
+        for (Encounter enc : encList) {
+            Object[] row = new Object[6];
+            row[0] = enc.getDoctorId();
+            row[1] = enc.getVitalSign().getTempurature();
+            row[2] = enc.getVitalSign().getBloodPressure();
+            row[3] = enc.getVitalSign().getPulse();
+            row[4] = enc.getDiagnosis();
+            row[5] = enc.getPrescription();
+            
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -52,7 +67,7 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jViewButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jEncounterDetailsTextArea = new javax.swing.JTextArea();
+        jDiagnosisTextArea = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPrescriptionTextArea = new javax.swing.JTextArea();
 
@@ -70,7 +85,7 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Patient's view encounter history console");
+        jLabel2.setText("Patient's encounter history ");
 
         jLabel13.setText("Prescription");
 
@@ -104,9 +119,9 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
             }
         });
 
-        jEncounterDetailsTextArea.setColumns(20);
-        jEncounterDetailsTextArea.setRows(5);
-        jScrollPane2.setViewportView(jEncounterDetailsTextArea);
+        jDiagnosisTextArea.setColumns(20);
+        jDiagnosisTextArea.setRows(5);
+        jScrollPane2.setViewportView(jDiagnosisTextArea);
 
         jPrescriptionTextArea.setColumns(20);
         jPrescriptionTextArea.setRows(5);
@@ -116,15 +131,6 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(244, 244, 244)))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -137,12 +143,18 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(backJButton)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(256, 256, 256))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backJButton)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +186,18 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void jViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jViewButtonActionPerformed
+        int rowIndex = jEncounterHistoryTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jEncounterHistoryTable.getModel();
+        Encounter selectedEncounter = (Encounter)model.getValueAt(rowIndex, 0);
+        
+        jDiagnosisTextArea.setText(selectedEncounter.getDiagnosis());
+        jPrescriptionTextArea.setText(selectedEncounter.getPrescription());
         
     }//GEN-LAST:event_jViewButtonActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JTextArea jEncounterDetailsTextArea;
+    private javax.swing.JTextArea jDiagnosisTextArea;
     private javax.swing.JTable jEncounterHistoryTable;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

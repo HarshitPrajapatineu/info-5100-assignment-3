@@ -4,9 +4,11 @@
  */
 package view.doctor;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Encounter;
 import model.Patient;
 import model.SystemData;
 
@@ -42,6 +44,9 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPatientsTable = new javax.swing.JTable();
         viewDetailsjButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jDoctorIDTextField = new javax.swing.JTextField();
+        jGoButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
@@ -88,6 +93,15 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Doctor ID");
+
+        jGoButton.setText("Go");
+        jGoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,16 +112,24 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(159, 159, 159))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(viewDetailsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(252, 252, 252)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(viewDetailsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(246, 246, 246))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDoctorIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jGoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,13 +138,18 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backJButton))
-                .addGap(29, 29, 29)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jDoctorIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jGoButton))
+                .addGap(46, 46, 46)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(viewDetailsjButton)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,7 +173,6 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) jPatientsTable.getModel();
                 Patient selectedPatient = (Patient)model.getValueAt(rowIndex, 0);
 
-                 
                 ViewVitalSignJPanel viewVitalSignJPanel = new ViewVitalSignJPanel(userProcessJPanel, sysData, selectedPatient);
                 userProcessJPanel.add("ViewVitalSignJPanel", viewVitalSignJPanel);
                 CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
@@ -155,11 +181,39 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_viewDetailsjButtonActionPerformed
 
+    private void jGoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGoButtonActionPerformed
+        if (jDoctorIDTextField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Enter your Id");
+        }
+        else{
+            int doctorId = Integer.parseInt(jDoctorIDTextField.getText());
+            if (!sysData.isDoctorExists(doctorId)){
+                JOptionPane.showMessageDialog(this, "Please enter a valid ID");
+            }
+            else{
+                ArrayList<Encounter> encList= sysData.getEncounterListByDocId(doctorId);
+                DefaultTableModel dtm = (DefaultTableModel) jPatientsTable.getModel();
+                dtm.setRowCount(0);
+                for (Encounter enc : encList) {
+                    Object[] row = new Object[4];
+                    row[0] = enc.getPatientId();
+                    row[1] = sysData.getPatientFullNameById(enc.getPatientId());
+                    row[2] = enc.getAppointmentDate();
+                    row[3] = enc.getStatus();
+                    dtm.addRow(row);
+                }
+            }
+        }
+    }//GEN-LAST:event_jGoButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JTextField jDoctorIDTextField;
+    private javax.swing.JButton jGoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTable jPatientsTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton viewDetailsjButton;

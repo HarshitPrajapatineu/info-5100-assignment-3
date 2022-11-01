@@ -6,6 +6,8 @@ package model;
 
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collection;
+import static java.util.stream.Collectors.toList;
 
 /**
  *
@@ -23,6 +25,7 @@ public class SystemData {
     public ArrayList<Patient> patientList = new ArrayList<Patient>();
     public ArrayList<Encounter> encounterList = new ArrayList<Encounter>();
     public ArrayList<VitalSign> vitalSignList = new ArrayList<VitalSign>();
+    public Patient patient = new Patient();
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -136,7 +139,41 @@ public class SystemData {
         return encounterList.stream().filter(a -> a.getPatientId()== (patientId)).findAny().orElse(null);
     }
     
+    public Patient getPatientById(int patientId){
+        return patientList != null ? patientList.stream().filter(a -> a.getPatientId()== (patientId)).findAny().orElse(null) : null;
+    }
+    
+    public String getPatientFullNameById(int patientId) {
+        return getPatientById(patientId).getFirstName() + " " + getPatientById(patientId).getLastName();  
+    }
+    
     public boolean isPatientExists(int patId) {
         return patientList.stream().anyMatch(a -> a.getPatientId()== (patId));
+    }
+    
+    public boolean isDoctorExists(int doctorId) {
+        return doctorList.stream().anyMatch(a -> a.getEmpId()==(doctorId));
+    }
+    
+    public ArrayList<Encounter> getEncounterListByPatientId(int patientId) {
+        if(encounterList != null)
+        {
+            ArrayList<Encounter> list = (ArrayList<Encounter>) encounterList.stream().
+                    filter(a -> a.getPatientId() == (patientId)).collect(toList());
+            return (ArrayList<Encounter>)list;
+        } else {
+            return encounterList;
+        }
+    }
+    
+    public ArrayList<Encounter> getEncounterListByDocId(int docId) {
+        if(encounterList != null)
+        {
+            ArrayList<Encounter> list = (ArrayList<Encounter>) encounterList.stream().
+                    filter(a -> a.getDoctorId() == (docId)).collect(toList());
+            return (ArrayList<Encounter>)list;
+        } else {
+            return encounterList;
+        }
     }
 }

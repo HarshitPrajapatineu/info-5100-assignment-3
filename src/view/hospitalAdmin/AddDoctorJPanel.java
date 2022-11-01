@@ -87,7 +87,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backJButton2)
-                .addGap(113, 113, 113)
+                .addGap(155, 155, 155)
                 .addComponent(panelHeadingJLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -95,9 +95,9 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelHeadingJLabel)
-                    .addComponent(backJButton2))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backJButton2)
+                    .addComponent(panelHeadingJLabel))
                 .addContainerGap())
         );
 
