@@ -13,6 +13,10 @@ import model.Hospital;
 import model.HospitalAdmin;
 import model.SystemData;
 import common.Enum;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -152,6 +156,11 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
         searchJButton.setMaximumSize(new java.awt.Dimension(53, 25));
         searchJButton.setMinimumSize(new java.awt.Dimension(53, 25));
         searchJButton.setPreferredSize(new java.awt.Dimension(53, 25));
+        searchJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchJButtonActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -445,31 +454,32 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
 
     private void viewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewJButtonActionPerformed
         int selectedRow = viewUserJTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
-        int hospitalAdminId = (int) model.getValueAt(selectedRow, 0);
-        String hospitalName = (String) model.getValueAt(selectedRow, 2);
-        selectedHospitalAdmin = sysData.getHospitalAdminList().get(selectedRow);
-        selectedHospital = sysData.getHospitalList().get(selectedRow);
-        
-//        ArrayList<HospitalAdmin> hList =
-//        sysData.getHospitalAdminList().stream().
-//                filter(a -> a.getPersonId().equals(selectedHospitalAdmin)).findAny().orElse(null);
-//        
-//        sysData.getHospitalList().stream().
-//                filter(a -> a.getHospitalName().equals(hospitalName)).toList();
         if (selectedRow < 0) {
-            showMessageDialog(this, "Please select a row.");
+            JOptionPane.showMessageDialog(this, "Please select a row.");
             return;
         }
+        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
+        int hospitalAdminId = (int) model.getValueAt(selectedRow, 0);
+        selectedHospitalAdmin = sysData.getHospitalAdminById(hospitalAdminId);
+        selectedHospital = sysData.getHospitalById(selectedHospitalAdmin.getHospitalId());
+        
         getDataInForm();
     }//GEN-LAST:event_viewJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = viewUserJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
+        int hospitalAdminId = (int) model.getValueAt(selectedRow, 0);
+        sysData.getHospitalAdminList().remove(sysData.getHospitalAdminById(hospitalAdminId));
+        renderView();
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        AddHospitalAdminJPanel addHospitalAdminJPanel = new AddHospitalAdminJPanel(userProcessJPanel, sysData, false);
+        AddHospitalAdminJPanel addHospitalAdminJPanel = new AddHospitalAdminJPanel(userProcessJPanel, sysData, selectedHospitalAdmin);
         userProcessJPanel.add("AddHospitalAdminJPanel", addHospitalAdminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -494,11 +504,33 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        AddHospitalAdminJPanel addHospitalAdminJPanel = new AddHospitalAdminJPanel(userProcessJPanel, sysData, true);
+        int selectedRow = viewUserJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row.");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
+        int hospitalAdminId = (int) model.getValueAt(selectedRow, 0);
+        selectedHospitalAdmin = sysData.getHospitalAdminById(hospitalAdminId);
+        selectedHospital = sysData.getHospitalById(selectedHospitalAdmin.getHospitalId());
+        
+        AddHospitalAdminJPanel addHospitalAdminJPanel = new AddHospitalAdminJPanel(userProcessJPanel, sysData, selectedHospitalAdmin);
         userProcessJPanel.add("AddHospitalAdminJPanel", addHospitalAdminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
     }//GEN-LAST:event_editJButtonActionPerformed
+
+    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(viewUserJTable.getModel());
+        viewUserJTable.setRowSorter(sorter);
+        String text = searchJTextField.getText();
+        if (text.length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter(text));
+        }
+    }//GEN-LAST:event_searchJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -545,27 +577,29 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
     private void getDataInForm() {
 
         // set data for hospital admin
-        firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
-        lastNameJTextField.setText(selectedHospitalAdmin.getLastName());
-        genderJComboBox.setSelectedIndex(selectedHospitalAdmin.getGender());
-        dobJDateChooser.setDate(selectedHospitalAdmin.getDob());
-        phoneJTextField.setText(selectedHospitalAdmin.getPhone());
-        emailJTextField.setText(selectedHospitalAdmin.getEmailId());
-        addressOneJTextField.setText(selectedHospitalAdmin.getAddress().getAddressOne());
-        addressTwoJTextField.setText(selectedHospitalAdmin.getAddress().getAddressTwo());
-        cityJComboBox.setSelectedIndex(selectedHospitalAdmin.getAddress().getCity());
-        postalCodeJTextField.setText(selectedHospitalAdmin.getAddress().getPostalCode());
-        
+        if (selectedHospitalAdmin != null) {
+            firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
+            lastNameJTextField.setText(selectedHospitalAdmin.getLastName());
+            genderJComboBox.setSelectedIndex(selectedHospitalAdmin.getGender());
+            dobJDateChooser.setDate(selectedHospitalAdmin.getDob());
+            phoneJTextField.setText(selectedHospitalAdmin.getPhone());
+            emailJTextField.setText(selectedHospitalAdmin.getEmailId());
+            addressOneJTextField.setText(selectedHospitalAdmin.getAddress().getAddressOne());
+            addressTwoJTextField.setText(selectedHospitalAdmin.getAddress().getAddressTwo());
+            cityJComboBox.setSelectedIndex(selectedHospitalAdmin.getAddress().getCity());
+            postalCodeJTextField.setText(selectedHospitalAdmin.getAddress().getPostalCode());
+
+        }
         // set data for hospital
-        hospitalNameJTextField.setText(selectedHospital.getHospitalName());
-        hospitalContactJTextField.setText(selectedHospital.getPhone());
-        hospitalAddressJTextField.setText(selectedHospital.getAddress().getAddressOne() + ", " +
+        if (selectedHospital != null)
+        {
+            hospitalNameJTextField.setText(selectedHospital.getHospitalName());
+            hospitalContactJTextField.setText(selectedHospital.getPhone());
+            hospitalAddressJTextField.setText(selectedHospital.getAddress().getAddressOne() + ", " +
                 selectedHospital.getAddress().getAddressTwo()+ ", " +
                 selectedHospital.getAddress().getPostalCode());
-        firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
-        firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
-        firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
-        firstNameJTextField.setText(selectedHospitalAdmin.getFirstName());
+        
+        }
         
     }
 
@@ -602,7 +636,8 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
                 row[0] = hAdmin.getPersonId();
                 row[1] = hAdmin.getFirstName() + " " + hAdmin.getLastName();
                 row[2] = hAdmin.getEmailId();
-                row[3] = sysData.getHospitalById(hAdmin.getHospitalId()).getHospitalName();
+                Hospital hospital = sysData.getHospitalById(hAdmin.getHospitalId());
+                row[3] = hospital != null ? hospital.getHospitalName() : null;
                 dtm.addRow(row);
             }
         }

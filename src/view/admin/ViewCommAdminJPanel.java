@@ -5,8 +5,12 @@
 package view.admin;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.Community;
 import model.CommunityAdmin;
 import model.HospitalAdmin;
@@ -149,6 +153,11 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
         searchJButton.setMaximumSize(new java.awt.Dimension(53, 25));
         searchJButton.setMinimumSize(new java.awt.Dimension(53, 25));
         searchJButton.setPreferredSize(new java.awt.Dimension(53, 25));
+        searchJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchJButtonActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -247,7 +256,7 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
 
         hospitalNameJTextField.setEnabled(false);
 
-        jLabel14.setText("Hospital Contact :");
+        jLabel14.setText("Community Contact :");
 
         hospitalContactJTextField.setEnabled(false);
 
@@ -455,7 +464,15 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_viewJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = viewUserJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
+        int commAdminId = (int) model.getValueAt(selectedRow, 0);
+        sysData.getCommunityAdminList().remove(sysData.getCommunityAdminById(commAdminId));
+        renderView();
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -493,6 +510,17 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     private void postalCodeJTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeJTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_postalCodeJTextField1ActionPerformed
+
+    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(viewUserJTable.getModel());
+        viewUserJTable.setRowSorter(sorter);
+        String text = searchJTextField.getText();
+        if (text.length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter(text));
+        }
+    }//GEN-LAST:event_searchJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

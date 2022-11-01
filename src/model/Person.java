@@ -11,6 +11,11 @@ import java.util.Date;
  * @author dell
  */
 public class Person {
+    
+    public static int len = 0;
+    public Person(){
+        personId = ++len;
+    }
     private int personId;
     private String FirstName;
     private String LastName;
