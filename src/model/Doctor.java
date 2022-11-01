@@ -11,6 +11,7 @@ package model;
 public class Doctor extends Person {
 
     public Doctor() {
+        empId = getPersonId();
     }
     
     private int empId;

@@ -12,15 +12,15 @@ import java.util.ArrayList;
  */
 public class SystemData {
     
-    public ArrayList<City> cityList;
-    public ArrayList<String> cityDDList;
-    public ArrayList<CommunityAdmin> communityAdminList;
-    public ArrayList<Community> communityList;
-    public ArrayList<HospitalAdmin> hospitalAdminList;
-    public ArrayList<Hospital> hospitalList;
-    public ArrayList<Doctor> doctorList;
-    public ArrayList<Patient> patientList;
-    public ArrayList<Encounter> encounterList;
+    public ArrayList<City> cityList = new ArrayList<>();
+    public ArrayList<String> cityDDList = new ArrayList<String>();
+    public ArrayList<CommunityAdmin> communityAdminList = new ArrayList<CommunityAdmin>();
+    public ArrayList<Community> communityList = new ArrayList<Community>();
+    public ArrayList<HospitalAdmin> hospitalAdminList = new ArrayList<HospitalAdmin>();
+    public ArrayList<Hospital> hospitalList = new ArrayList<Hospital>();
+    public ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
+    public ArrayList<Patient> patientList = new ArrayList<Patient>();
+    public ArrayList<Encounter> encounterList = new ArrayList<Encounter>();
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -95,23 +95,28 @@ public class SystemData {
     }
     
     public Hospital getHospitalById(int hospitalId) {
-        return hospitalList.stream().
-                filter(a -> a.getHospitalId() == (hospitalId)).findAny().orElse(null);
+        return hospitalList != null ? hospitalList.stream().
+                filter(a -> a.getHospitalId() == (hospitalId)).findAny().orElse(null) : null;
     }
     
     public HospitalAdmin getHospitalAdminById(int hospitalAdminId) {
-        return hospitalAdminList.stream().
-                filter(a -> a.getPersonId() == (hospitalAdminId)).findAny().orElse(null);
+        return hospitalAdminList != null ? hospitalAdminList.stream().
+                filter(a -> a.getPersonId() == (hospitalAdminId)).findAny().orElse(null) : null;
+    }
+    
+    public HospitalAdmin getHospitalAdminByHospitalId(int hospitalId) {
+        return hospitalAdminList != null ? hospitalAdminList.stream().
+                filter(a -> a.getHospitalId()== (hospitalId)).findAny().orElse(null) : null;
     }
     
     public CommunityAdmin getCommunityAdminById(int communityAdminId) {
-        return communityAdminList.stream().
-                filter(a -> a.getPersonId() == (communityAdminId)).findAny().orElse(null);
+        return communityAdminList != null ? communityAdminList.stream().
+                filter(a -> a.getPersonId() == (communityAdminId)).findAny().orElse(null) : null;
     }
     
     public Community getCommunityById(int communityId) {
-        return communityList.stream().
-                filter(a -> a.getCommId() == (communityId)).findAny().orElse(null);
+        return communityList != null ? communityList.stream().
+                filter(a -> a.getCommId() == (communityId)).findAny().orElse(null) : null;
     }
     
 }

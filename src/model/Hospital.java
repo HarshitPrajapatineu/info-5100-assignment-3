@@ -10,6 +10,11 @@ package model;
  */
 public class Hospital {
 
+    public Hospital() {
+        hospitalId = ++len;
+    }
+    
+    private static int len = 0;
     private int hospitalId;
     private String hospitalName;
     private Address address;
