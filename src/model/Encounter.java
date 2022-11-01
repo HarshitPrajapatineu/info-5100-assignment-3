@@ -11,6 +11,10 @@ import java.util.Date;
  * @author dell
  */
 public class Encounter {
+
+    public Encounter() {
+        encounterId = getPersonId();;
+    }
     
     private int encounterId;
     private int doctorId;

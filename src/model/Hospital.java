@@ -10,6 +10,11 @@ package model;
  */
 public class Hospital {
 
+    public Hospital() {
+        hospitalId = ++len;
+    }
+    
+    private static int len = 0;
     private int hospitalId;
     private int commId;
     private String hospitalName;
@@ -39,6 +44,11 @@ public class Hospital {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    
+    
+
+    
 
     public String getPhone() {
         return phone;

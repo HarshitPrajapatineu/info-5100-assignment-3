@@ -11,6 +11,11 @@ import common.Enum;
  */
 public class Community {
     
+    public void Community() {
+        commId = ++len;
+    }
+    
+    private static int len = 0;
     private int commId;
     private String commName;
     private int city;
