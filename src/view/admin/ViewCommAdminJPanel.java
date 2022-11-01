@@ -476,7 +476,7 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, false);
+        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, null);
         userProcessJPanel.add("AddCommunityAdminJPanel", addCommunityAdminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -489,7 +489,7 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, true);
+        AddCommunityAdminJPanel addCommunityAdminJPanel = new AddCommunityAdminJPanel(userProcessJPanel, sysData, selectedCommunityAdmin);
         userProcessJPanel.add("AddCommunityAdminJPanel", addCommunityAdminJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);

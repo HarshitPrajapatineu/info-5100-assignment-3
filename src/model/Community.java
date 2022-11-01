@@ -18,9 +18,19 @@ public class Community {
     private static int len = 0;
     private int commId;
     private String commName;
+    private String contact;
     private int city;
     private String postalCode;
 
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    
     public int getCommId() {
         return commId;
     }
