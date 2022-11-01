@@ -135,4 +135,8 @@ public class SystemData {
     public Encounter getVitalSignsByPatientId(int patientId){
         return encounterList.stream().filter(a -> a.getPatientId()== (patientId)).findAny().orElse(null);
     }
+    
+    public boolean isPatientExists(int patId) {
+        return patientList.stream().anyMatch(a -> a.getPatientId()== (patId));
+    }
 }

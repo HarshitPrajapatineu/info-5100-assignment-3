@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view.patient;
-
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -151,22 +150,37 @@ public class PatientJPanel extends javax.swing.JPanel {
 
     private void jAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAppointmentButtonActionPerformed
         if (jPatientIdSearchField.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Enter yout Patient Id please. If you do not have a patient ID, please register yourself by clicking on the button below.");
+            JOptionPane.showMessageDialog(this, "Enter yout patient Id please. If you do not have a patient ID, please register yourself by clicking on the button below.");
         }
         else{
+            
             int patientId = Integer.parseInt(jPatientIdSearchField.getText());
-            PatientAppointmentJPanel patientAppointmentJPanel = new PatientAppointmentJPanel(userProcessJPanel, sysData, patientId);
-            userProcessJPanel.add("PatientAppointmentJPanel", patientAppointmentJPanel);
-            CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
-            layout.next(userProcessJPanel);
+            if (!sysData.isPatientExists(patientId)){
+                JOptionPane.showMessageDialog(this, "Please enter a valid patient ID");
+            }
+            else{      
+                PatientAppointmentJPanel patientAppointmentJPanel = new PatientAppointmentJPanel(userProcessJPanel, sysData, patientId);
+                userProcessJPanel.add("PatientAppointmentJPanel", patientAppointmentJPanel);
+                CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+                layout.next(userProcessJPanel);
+            }
         }
     }//GEN-LAST:event_jAppointmentButtonActionPerformed
 
     private void jEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEncounterButtonActionPerformed
-        EncounterHistoryJPanel encounterHistoryJPanel = new EncounterHistoryJPanel(userProcessJPanel, sysData);
-        userProcessJPanel.add("EncounterHistoryJPanel", encounterHistoryJPanel);
-        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
-        layout.next(userProcessJPanel);
+        if (jPatientIdSearchField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Enter yout Patient Id please. If you do not have a patient ID, please register yourself by clicking on the button below.");
+        }
+        else{
+            int patientId = Integer.parseInt(jPatientIdSearchField.getText());
+            if (!sysData.isPatientExists(patientId)){
+                JOptionPane.showMessageDialog(this, "Please enter a valid patient ID");
+            }
+            EncounterHistoryJPanel encounterHistoryJPanel = new EncounterHistoryJPanel(userProcessJPanel, sysData, patientId);
+            userProcessJPanel.add("EncounterHistoryJPanel", encounterHistoryJPanel);
+            CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+            layout.next(userProcessJPanel);
+        }
     }//GEN-LAST:event_jEncounterButtonActionPerformed
 
     private void jRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterButtonActionPerformed
