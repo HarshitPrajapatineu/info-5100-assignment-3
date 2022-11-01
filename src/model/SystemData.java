@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 /**
@@ -49,7 +50,7 @@ public class SystemData {
     public ArrayList<Community> getCommunityList() {
         return communityList;
     }
-
+    
     public void setCommunityList(ArrayList<Community> communityList) {
         this.communityList = communityList;
     }
@@ -113,5 +114,6 @@ public class SystemData {
         return communityList.stream().
                 filter(a -> a.getCommId() == (communityId)).findAny().orElse(null);
     }
+    
     
 }
