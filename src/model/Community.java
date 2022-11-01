@@ -53,5 +53,4 @@ public class Community {
         this.postalCode = postalCode;
     }
     
-    
 }

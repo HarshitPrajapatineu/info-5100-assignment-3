@@ -4,7 +4,10 @@
  */
 package view.doctor;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Patient;
 import model.SystemData;
 
 /**
@@ -37,8 +40,8 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jPatientsTable = new javax.swing.JTable();
+        viewDetailsjButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
@@ -60,23 +63,28 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel2.setText("List of patients");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPatientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Patient ID", "Name", "Date", "Time"
+                "Patient ID", "Name", "Date", "Status of appointment"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
 
-        jButton1.setText("View details");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jPatientsTable);
+
+        viewDetailsjButton.setText("View details");
+        viewDetailsjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewDetailsjButtonActionPerformed(evt);
             }
         });
 
@@ -97,7 +105,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(245, 245, 245)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(viewDetailsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -113,7 +121,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addComponent(viewDetailsjButton)
                 .addContainerGap(220, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -124,16 +132,36 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void viewDetailsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsjButtonActionPerformed
+        System.out.println(jPatientsTable.getRowCount());
+        if (jPatientsTable.getRowCount() == 0){
+            JOptionPane.showMessageDialog(this, "Table is empty.");
+        }
+        else{
+            int rowIndex = jPatientsTable.getSelectedRow();
+            if (rowIndex < 0){
+                JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            }
+            else{
+                DefaultTableModel model = (DefaultTableModel) jPatientsTable.getModel();
+                Patient selectedPatient = (Patient)model.getValueAt(rowIndex, 0);
+
+                 
+                ViewVitalSignJPanel viewVitalSignJPanel = new ViewVitalSignJPanel(userProcessJPanel, sysData, selectedPatient);
+                userProcessJPanel.add("ViewVitalSignJPanel", viewVitalSignJPanel);
+                CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+                layout.next(userProcessJPanel);
+            }
+        }
+    }//GEN-LAST:event_viewDetailsjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTable jPatientsTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton viewDetailsjButton;
     // End of variables declaration//GEN-END:variables
 }

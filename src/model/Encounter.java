@@ -13,12 +13,12 @@ import java.util.Date;
 public class Encounter {
 
     public Encounter() {
-        encounterId = getPersonId();;
+        encounterId = getPatientId();
     }
     
     private int encounterId;
     private int doctorId;
-    private int personId;
+    private int patientId;
     private Date appointmentDate;
     private VitalSign vitalSign;
     private String diagnosis;
@@ -33,12 +33,12 @@ public class Encounter {
         this.doctorId = doctorId;
     }
 
-    public int getPersonId() {
-        return personId;
+    public int getPatientId() {
+        return patientId;
     }
 
-    public void setPersonId(int personId) {
-        this.personId = personId;
+    public void setPatientId(int personId) {
+        this.patientId = personId;
     }
 
     public Date getAppointmentDate() {
@@ -48,7 +48,6 @@ public class Encounter {
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
-
     
     public int getEncounterId() {
         return encounterId;
@@ -89,6 +88,4 @@ public class Encounter {
     public void setEncounterDate(Date encounterDate) {
         this.encounterDate = encounterDate;
     }
-    
-    
 }

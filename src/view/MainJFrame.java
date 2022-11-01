@@ -14,6 +14,7 @@ import common.Enum;
 import java.util.Locale;
 import model.SystemData;
 import view.doctor.ViewDoctorJPanel;
+import view.patient.PatientJPanel;
 
 /**
  *
@@ -96,6 +97,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         patientJButton.setBackground(new java.awt.Color(253, 228, 227));
         patientJButton.setText("Patient");
+        patientJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientJButtonActionPerformed(evt);
+            }
+        });
 
         hosAdminJButton.setText("Hospital Admin");
         hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +195,13 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
     }//GEN-LAST:event_hosAdminJButtonActionPerformed
+
+    private void patientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientJButtonActionPerformed
+        PatientJPanel patientJPanel = new PatientJPanel(userProcessJPanel, sysData);
+        userProcessJPanel.add("PatientJPanel", patientJPanel);
+        CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
+        layout.next(userProcessJPanel);
+    }//GEN-LAST:event_patientJButtonActionPerformed
 
     /**
      * @param args the command line arguments
