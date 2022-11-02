@@ -103,6 +103,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        hosAdminJButton.setBackground(new java.awt.Color(253, 228, 227));
         hosAdminJButton.setText("Hospital Admin");
         hosAdminJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
