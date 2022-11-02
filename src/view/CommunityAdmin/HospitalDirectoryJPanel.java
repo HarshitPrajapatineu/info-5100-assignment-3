@@ -69,6 +69,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         CommunityJTextField = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
         setMinimumSize(new java.awt.Dimension(620, 540));
 
@@ -101,6 +102,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             HospitalDirectoryjTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        viewJButton.setBackground(new java.awt.Color(253, 228, 227));
         viewJButton.setText("View Details");
         viewJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +110,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        editJButton.setBackground(new java.awt.Color(253, 228, 227));
         editJButton.setText("Edit Details");
         editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +118,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteJButton.setBackground(new java.awt.Color(253, 228, 227));
         deleteJButton.setText("Delete");
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +126,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        addJButton.setBackground(new java.awt.Color(253, 228, 227));
         addJButton.setText("Add Details");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +134,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        searchJButton.setBackground(new java.awt.Color(253, 228, 227));
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/search.png"))); // NOI18N
         searchJButton.setText(" Search");
         searchJButton.setMaximumSize(new java.awt.Dimension(53, 25));
@@ -140,6 +146,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        backJButton.setBackground(new java.awt.Color(253, 228, 227));
         backJButton.setText("Go Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +225,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(hospitalIDJTextField)
-                        .addGap(326, 326, 326))
+                        .addGap(332, 332, 332))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -264,11 +271,11 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(CommunityJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

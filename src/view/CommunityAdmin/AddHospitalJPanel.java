@@ -68,7 +68,7 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
         ResetjButton = new javax.swing.JButton();
         SavejButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
         setMinimumSize(new java.awt.Dimension(620, 540));
         setName(""); // NOI18N
@@ -109,7 +109,7 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setText("Phone :");
 
@@ -198,6 +198,7 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        ResetjButton.setBackground(new java.awt.Color(253, 228, 227));
         ResetjButton.setText("Reset");
         ResetjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +206,7 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
+        SavejButton.setBackground(new java.awt.Color(253, 228, 227));
         SavejButton.setText("Save");
         SavejButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
