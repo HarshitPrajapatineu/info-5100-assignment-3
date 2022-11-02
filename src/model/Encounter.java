@@ -11,10 +11,12 @@ import java.util.Date;
  * @author dell
  */
 public class Encounter {
-
+    public static int len = 0;
     public Encounter() {
-        encounterId = getPatientId();
+        
+        encounterId = ++len;
     }
+    
     
     private int encounterId;
     private int doctorId;
@@ -24,7 +26,6 @@ public class Encounter {
     private String diagnosis;
     private String prescription;
     private Date encounterDate;
-    private String status;
 
     public int getDoctorId() {
         return doctorId;
@@ -89,13 +90,4 @@ public class Encounter {
     public void setEncounterDate(Date encounterDate) {
         this.encounterDate = encounterDate;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-   
 }

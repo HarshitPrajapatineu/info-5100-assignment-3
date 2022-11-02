@@ -3,10 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Collection;
 import static java.util.stream.Collectors.toList;
 
 /**

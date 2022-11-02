@@ -5,8 +5,6 @@
 package view.CommunityAdmin;
 
 import java.awt.CardLayout;
-import java.awt.List;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
@@ -14,14 +12,8 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import model.Community;
-import model.CommunityList;
 import model.Hospital;
-import model.HospitalAdmin;
-import model.HospitalList;
 import model.SystemData;
-import view.hospitalAdmin.*;
-import view.admin.*;
 
 /**
  *

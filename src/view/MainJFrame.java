@@ -53,14 +53,12 @@ public class MainJFrame extends javax.swing.JFrame {
         userControlJPanel = new javax.swing.JPanel();
         adminJButton = new javax.swing.JButton();
         commAdminJButton = new javax.swing.JButton();
-        guestUserJButton = new javax.swing.JButton();
         doctorJButton = new javax.swing.JButton();
         patientJButton = new javax.swing.JButton();
         hosAdminJButton = new javax.swing.JButton();
         userProcessJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(780, 540));
         setMinimumSize(new java.awt.Dimension(780, 540));
 
         splitJPane.setDividerLocation(160);
@@ -83,9 +81,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 commAdminJButtonActionPerformed(evt);
             }
         });
-
-        guestUserJButton.setBackground(new java.awt.Color(253, 228, 227));
-        guestUserJButton.setText("Guest User");
 
         doctorJButton.setBackground(new java.awt.Color(253, 228, 227));
         doctorJButton.setText("Doctor");
@@ -120,14 +115,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(adminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(commAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(guestUserJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(doctorJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(patientJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hosAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, patientJButton});
+        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, patientJButton});
 
         userControlJPanelLayout.setVerticalGroup(
             userControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +136,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(doctorJButton)
                 .addGap(18, 18, 18)
                 .addComponent(patientJButton)
-                .addGap(19, 19, 19)
-                .addComponent(guestUserJButton)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
-        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, guestUserJButton, patientJButton});
+        userControlJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adminJButton, commAdminJButton, doctorJButton, patientJButton});
 
         splitJPane.setLeftComponent(userControlJPanel);
 
@@ -250,7 +242,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton adminJButton;
     private javax.swing.JButton commAdminJButton;
     private javax.swing.JButton doctorJButton;
-    private javax.swing.JButton guestUserJButton;
     private javax.swing.JButton hosAdminJButton;
     private javax.swing.JButton patientJButton;
     private javax.swing.JSplitPane splitJPane;
