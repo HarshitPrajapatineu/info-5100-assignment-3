@@ -10,7 +10,9 @@ package model;
  */
 public class Doctor extends Person {
 
+//    private static int len = 0;
     public Doctor() {
+        empId = ++len;
         empId = getPersonId();
     }
     

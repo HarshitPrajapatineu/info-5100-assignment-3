@@ -411,7 +411,7 @@ public class HospitalDirectoryJPanel extends javax.swing.JPanel {
         var hospitalList = sysData.getHospitalList().stream().
                 filter(a -> a.getAddress().getCommunityName().equals(communityName)).toList();
         
-        if(sysData.getHospitalList()!= null){
+        if(sysData.hospitalList!= null){
             for (Hospital hosp : hospitalList) {
                 Object[] row = new Object[3];
                 row[0] = hosp.getHospitalId();

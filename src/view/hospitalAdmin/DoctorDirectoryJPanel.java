@@ -32,11 +32,16 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
     SystemData sysData;
     private static final String EMPTY_STRING = "";
     Doctor selectedDoctor;
+    int inthospID;
     
-    public DoctorDirectoryJPanel(JPanel userProcessJPanel, String community) {
+    public DoctorDirectoryJPanel(JPanel userProcessJPanel, String community, SystemData sysData, int hospID) {
         this.userProcessJPanel = userProcessJPanel;
+        this.sysData = sysData;
         initComponents();
-        
+ //       renderTable(hospID);
+        HospitalIDJTextField.setText(String.valueOf(hospID));
+        inthospID=hospID;
+        renderTable(inthospID);
     }
 
     /**
@@ -77,17 +82,17 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
 
         DoctorDirectoryjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Employee ID", "Doctor Name", "Expertise", "Hospital ID"
+                "Employee ID", "Doctor Name", "Expertise"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,7 +104,6 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
             DoctorDirectoryjTable.getColumnModel().getColumn(0).setResizable(false);
             DoctorDirectoryjTable.getColumnModel().getColumn(1).setResizable(false);
             DoctorDirectoryjTable.getColumnModel().getColumn(2).setResizable(false);
-            DoctorDirectoryjTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         viewJButton.setText("View Details");
@@ -326,7 +330,7 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        AddDoctorJPanel addDoctorJPanel = new AddDoctorJPanel(userProcessJPanel, null, false);
+        AddDoctorJPanel addDoctorJPanel = new AddDoctorJPanel(userProcessJPanel, null, false, sysData, inthospID);
         userProcessJPanel.add("AddUserJPanel", addDoctorJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -349,7 +353,7 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
         int HospitalID = (int)model.getValueAt(selectedRow,0);
         Doctor selectedDoctor = sysData.getDoctorById(HospitalID);
         
-        AddDoctorJPanel addDoctorJPanel = new AddDoctorJPanel(userProcessJPanel, selectedDoctor, true);
+        AddDoctorJPanel addDoctorJPanel = new AddDoctorJPanel(userProcessJPanel, selectedDoctor, true, sysData, inthospID);
         userProcessJPanel.add("AddUserJPanel", addDoctorJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -407,6 +411,22 @@ private void getDataInForm(int selectedRow) {
     
 }
 
+private void renderTable(int hospitalId) {
 
+        DefaultTableModel dtm = (DefaultTableModel) DoctorDirectoryjTable.getModel();
+        dtm.setRowCount(0);
+        var doctorList = sysData.getDoctorList().stream().
+                filter(a -> a.getHospitalId() == hospitalId).toList();
+        
+        if(doctorList!= null){
+            for (Doctor doc : doctorList) {
+                Object[] row = new Object[3];
+                row[0] = doc.getEmpId();
+                row[1] = doc.getDoctorName();
+                row[2] = doc.getExpertise();
+                dtm.addRow(row);
+            }
+        }
+    }
 
 }

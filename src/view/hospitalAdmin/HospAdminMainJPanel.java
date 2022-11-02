@@ -77,7 +77,7 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setText("Enter Doctor ID:");
+        jLabel6.setText("Enter Admin ID:");
 
         DoctorIdjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,7 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageHosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHosAdminJButtonActionPerformed
-        String SelectedHospital;
+ //       String SelectedHospital;
         
         String ID = DoctorIdjTextField.getText();
         HospitalAdmin hospAdmin = sysData.getHospitalAdminById(Integer.parseInt(ID));
@@ -187,8 +187,9 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
         int comID = hosp.getCommId();
         Community selectedCom = sysData.getCommunityById(comID);
         String selectedCommunity = selectedCom.getCommName();
+        String selectedHospital = hosp.getHospitalName();
         
-        DoctorDirectoryJPanel doctorDirectoryJPanel = new DoctorDirectoryJPanel(userProcessJPanel, selectedCommunity);
+        DoctorDirectoryJPanel doctorDirectoryJPanel = new DoctorDirectoryJPanel(userProcessJPanel, selectedHospital, sysData, hospID);
         userProcessJPanel.add("DocDirectHospAdminJPanel", doctorDirectoryJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
