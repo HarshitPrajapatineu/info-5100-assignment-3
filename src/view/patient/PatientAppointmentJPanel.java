@@ -90,10 +90,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         jHospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Hospital Id", "Hospital Name", "Address"
@@ -113,9 +110,6 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jHospitalTable);
-        if (jHospitalTable.getColumnModel().getColumnCount() > 0) {
-            jHospitalTable.getColumnModel().getColumn(2).setHeaderValue("Address");
-        }
 
         jLabel4.setText("Enter date");
 
@@ -186,12 +180,9 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +231,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
                     int commId = c.getCommId();
                     Hospital hospital = sysData.getHospitalByCommId(commId);
                     if (hospital != null) {
-                        Object row[] = {hospital.getHospitalId(), hospital.getHospitalName(), hospital.getAddress()};
+                        Object row[] = {hospital.getHospitalId(), hospital.getHospitalName(), hospital.getAddress().getAddressOne()+","+hospital.getAddress().getAddressTwo()};
                         DefaultTableModel model = (DefaultTableModel) jHospitalTable.getModel();
                         model.addRow(row);
                     }
