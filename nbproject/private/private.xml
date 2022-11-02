@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/model/Doctor.java</file>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/view/patient/PatientAppointmentJPanel.java</file>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/model/CommunityList.java</file>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/view/doctor/ViewVitalSignJPanel.java</file>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/model/SystemData.java</file>
-            <file>file:/D:/Users/DKapoor/Documents/GitHub/info-5100-assignment-3/src/view/doctor/ViewDoctorJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/CommunityAdmin/HospitalDirectoryJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/hospitalAdmin/DoctorDirectoryJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/model/Hospital.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/hospitalAdmin/HospAdminMainJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/CommunityAdmin/CommAdminMainJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/CommunityAdmin/AddHospitalJPanel.java</file>
+            <file>file:/Users/aishwaryanagaraj/Documents/GitHub/info-5100-assignment-3/src/view/admin/ViewCommAdminJPanel.java</file>
         </group>
     </open-files>
 </project-private>
