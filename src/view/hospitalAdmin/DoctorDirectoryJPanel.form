@@ -61,28 +61,31 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel12" min="-2" pref="136" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="HospitalIDJTextField1" max="32767" attributes="0"/>
+                              <Component id="HospitalIDJTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel2" linkSize="2" min="-2" pref="136" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="EmpIDJTextField" linkSize="2" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel11" min="-2" pref="136" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cityJComboBox" min="-2" pref="136" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel11" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ExpertiseJComboBox" min="-2" pref="136" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="EmpIDJTextField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel13" min="-2" pref="136" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="CommunityJTextField" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="326" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -125,14 +128,19 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cityJComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ExpertiseJComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="HospitalIDJTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="HospitalIDJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="121" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CommunityJTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,7 +167,7 @@
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="Employee ID" type="java.lang.Object"/>
                 <Column editable="false" title="Doctor Name" type="java.lang.Object"/>
-                <Column editable="false" title="City" type="java.lang.Object"/>
+                <Column editable="false" title="Expertise" type="java.lang.Object"/>
                 <Column editable="false" title="Hospital ID" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -242,6 +250,9 @@
           <Dimension value="[53, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchJButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="searchJTextField">
     </Component>
@@ -255,6 +266,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="EmpIDJTextField">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -265,6 +277,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="DoctorNameJTextField">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -275,13 +288,21 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="City :"/>
+        <Property name="text" type="java.lang.String" value="Expertise:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cityJComboBox">
+    <Component class="javax.swing.JComboBox" name="ExpertiseJComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="7">
+            <StringItem index="0" value="Anesthesiology"/>
+            <StringItem index="1" value="DermatologyNeurology"/>
+            <StringItem index="2" value="Neurology"/>
+            <StringItem index="3" value="Orthopedic"/>
+            <StringItem index="4" value="Pathology"/>
+            <StringItem index="5" value="General Physician"/>
+            <StringItem index="6" value="Surgery"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -289,18 +310,33 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="HospitalIDJTextField1">
+    <Component class="javax.swing.JTextField" name="HospitalIDJTextField">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HospitalIDJTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HospitalIDJTextFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hospital ID: "/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Community:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="CommunityJTextField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CommunityJTextFieldActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
