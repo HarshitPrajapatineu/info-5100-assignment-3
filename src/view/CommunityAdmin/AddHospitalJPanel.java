@@ -282,7 +282,7 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
     private void SavejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavejButtonActionPerformed
         Hospital newHospital = new Hospital();
         newHospital.setHospitalName(HospitalNameJTextField.getText());
-        newHospital.setHospitalId(Integer.parseInt(HospitalIDJTextField.getText()));
+ //       newHospital.setHospitalId(Integer.parseInt(HospitalIDJTextField.getText()));
         newHospital.setPhone(phoneJTextField.getText());
         
         Address addr = new Address();
