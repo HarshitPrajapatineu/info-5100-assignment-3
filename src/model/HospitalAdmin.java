@@ -20,6 +20,4 @@ public class HospitalAdmin extends Person{
         this.hospitalId = hospitalId;
     }
     
-    
-    
 }

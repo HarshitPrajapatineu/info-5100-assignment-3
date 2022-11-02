@@ -41,7 +41,7 @@ public class EncounterHistoryJPanel extends javax.swing.JPanel {
         for (Encounter enc : encList) {
             Object[] row = new Object[6];
             row[0] = enc.getDoctorId();
-            row[1] = enc.getVitalSign().getTempurature();
+            row[1] = enc.getVitalSign().getTemperature();
             row[2] = enc.getVitalSign().getBloodPressure();
             row[3] = enc.getVitalSign().getPulse();
             row[4] = enc.getDiagnosis();

@@ -11,7 +11,7 @@ package model;
 public class VitalSign {
     private int pulse;
     private float bloodPressure;
-    private float tempurature;
+    private float temperature;
 
     public int getPulse() {
         return pulse;
@@ -29,12 +29,12 @@ public class VitalSign {
         this.bloodPressure = bloodPressure;
     }
 
-    public float getTempurature() {
-        return tempurature;
+    public float getTemperature() {
+        return temperature;
     }
 
-    public void setTempurature(float tempurature) {
-        this.tempurature = tempurature;
+    public void setTemperature(float tempurature) {
+        this.temperature = tempurature;
     }   
     
 }

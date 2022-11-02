@@ -21,4 +21,7 @@ public class EncounterList {
         this.encounterList = encounterList;
     }
     
+    public void deleteEncounter(Encounter selectedEncounter) {
+        encounterList.remove(selectedEncounter);
+    }
 }
