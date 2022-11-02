@@ -9,12 +9,12 @@ package model;
  * @author dell
  */
 public class CommunityAdmin extends Person {
-    
+    public static int len = 0;
+
     public CommunityAdmin() {
         commAdminId = ++len;
     }
     
-    private static int len = 0;
     private int commId;
     private int commAdminId;
     private String communityAdmin;

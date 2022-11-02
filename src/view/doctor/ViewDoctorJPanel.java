@@ -160,7 +160,6 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void viewDetailsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsjButtonActionPerformed
-        System.out.println(jPatientsTable.getRowCount());
         if (jPatientsTable.getRowCount() == 0){
             JOptionPane.showMessageDialog(this, "Table is empty.");
         }

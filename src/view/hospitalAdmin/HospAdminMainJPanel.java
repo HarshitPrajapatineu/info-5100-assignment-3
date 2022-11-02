@@ -7,6 +7,10 @@ package view.hospitalAdmin;
 import view.admin.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Community;
+import model.CommunityAdmin;
+import model.Hospital;
+import model.HospitalAdmin;
 import model.SystemData;
 
 /**
@@ -26,14 +30,14 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
         this.userProcessJPanel = userProcessJPanel;
         this.sysData = sysData;
         
-        int selectedCity;
-        int selectedCommunity;
-        int selectedHospital;
-        String strSelectedCommunity;
-        String strSelectedCity;
-        String strSelectedHospital;
+//        int selectedCity;
+//        int selectedCommunity;
+//        int selectedHospital;
+//        String strSelectedCommunity;
+//        String strSelectedCity;
+//        String strSelectedHospital;
         
-        prepCityDDList();
+ //       prepCityDDList();
     }
 
     /**
@@ -48,12 +52,8 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         manageHosAdminJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        CityjComboBox = new javax.swing.JComboBox<>();
-        HospitaljComboBox = new javax.swing.JComboBox<>();
-        CommunityjComboBox = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        DoctorIdjTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
@@ -77,25 +77,11 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Select City:");
+        jLabel6.setText("Enter Doctor ID:");
 
-        jLabel4.setText("Select Community:");
-
-        jLabel5.setText("Select Hospital:");
-
-        CityjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CityjComboBox.addActionListener(new java.awt.event.ActionListener() {
+        DoctorIdjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CityjComboBoxActionPerformed(evt);
-            }
-        });
-
-        HospitaljComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        CommunityjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CommunityjComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CommunityjComboBoxActionPerformed(evt);
+                DoctorIdjTextFieldActionPerformed(evt);
             }
         });
 
@@ -113,16 +99,10 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
                         .addGap(95, 95, 95)
                         .addComponent(manageHosAdminJButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HospitaljComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CommunityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DoctorIdjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,19 +110,11 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(109, 109, 109)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(CityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(CommunityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(HospitaljComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(DoctorIdjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(manageHosAdminJButton)
                 .addGap(20, 20, 20))
         );
@@ -201,12 +173,22 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageHosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHosAdminJButtonActionPerformed
-        DoctorDirectoryJPanel doctorDirectoryJPanel = new DoctorDirectoryJPanel(userProcessJPanel);
+        String SelectedHospital;
+        
+        String ID = DoctorIdjTextField.getText();
+        HospitalAdmin hospAdmin = sysData.getHospitalAdminById(Integer.parseInt(ID));
+        int hospID = hospAdmin.getHospitalId();
+        Hospital hosp = sysData.getHospitalById(hospID);
+        int comID = hosp.getCommId();
+        Community selectedCom = sysData.getCommunityById(comID);
+        String selectedCommunity = selectedCom.getCommName();
+        
+        DoctorDirectoryJPanel doctorDirectoryJPanel = new DoctorDirectoryJPanel(userProcessJPanel, selectedCommunity);
         userProcessJPanel.add("DocDirectHospAdminJPanel", doctorDirectoryJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -218,50 +200,48 @@ public class HospAdminMainJPanel extends javax.swing.JPanel {
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void CityjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CityjComboBoxActionPerformed
-        int selectedCity;
-        selectedCity = CityjComboBox.getSelectedIndex();
-        prepCommunityDDList(selectedCity);
-    }//GEN-LAST:event_CityjComboBoxActionPerformed
-
-    private void CommunityjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommunityjComboBoxActionPerformed
-        int selectedCommunity;
-        selectedCommunity = CommunityjComboBox.getSelectedIndex();
-        prepHospitalDDList(selectedCommunity);
-    }//GEN-LAST:event_CommunityjComboBoxActionPerformed
+    private void DoctorIdjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorIdjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DoctorIdjTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CityjComboBox;
-    private javax.swing.JComboBox<String> CommunityjComboBox;
-    private javax.swing.JComboBox<String> HospitaljComboBox;
+    private javax.swing.JTextField DoctorIdjTextField;
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton manageHosAdminJButton;
     // End of variables declaration//GEN-END:variables
 
-    private void prepCityDDList() {
-        sysData.getCityDDList().forEach(x ->CityjComboBox.addItem(x));
-    }
     
-    private void prepCommunityDDList(int selectedCity) {
+//    private void prepCityDDList() {
+ //       sysData.getCityDDList().forEach(x ->CityjComboBox.addItem(x));
+//    }
+//    
+//    private void prepCommunityDDList(int selectedCity) {
         
-        sysData.getCommunityList().stream().
-                filter(a -> a.getCity() == selectedCity).toList().
-                    forEach(x -> CommunityjComboBox.addItem(x.getCommName()));
-    }
+//        if (sysData.getCommunityList() != null) {
+            
+//            sysData.getCommunityList().stream().
+//                filter(a -> a.getCity() == selectedCity).toList().
+//                    forEach(x -> CommunityjComboBox.addItem(x.getCommName()));
+//        }
+        
+        
+//    }
     
-    private void prepHospitalDDList(int selectedCommunity) {
+//    private void prepHospitalDDList(String selectedCommunity) {
         
-  //      sysData.getHospitalList().stream().
-  //              filter(a -> a.getAddress().getCommunityName() == selectedCommunity).toList().
-  //                  forEach(x -> CommunityjComboBox.addItem(x.getHospitalName()));
-    }
+//        if (sysData.getHospitalList() != null) {
+//            sysData.getHospitalList().stream().
+//                filter(a -> a.getAddress().getCommunityName() == selectedCommunity).toList().
+//                    forEach(x -> CommunityjComboBox.addItem(x.getHospitalName()));
+//        }
+        
+        
+//    }
 
 }

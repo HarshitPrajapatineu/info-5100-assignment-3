@@ -7,6 +7,8 @@ package view.CommunityAdmin;
 import view.admin.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.Community;
+import model.CommunityAdmin;
 import model.SystemData;
 
 /**
@@ -32,7 +34,7 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
         this.userProcessJPanel = userProcessJPanel;
         this.sysData = sysData;
         
-        prepCityDDList();
+//        prepCityDDList();
         
     }
 
@@ -48,10 +50,8 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         manageHosAdminJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cityjComboBox = new javax.swing.JComboBox<>();
-        communityjComboBox = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        adminjTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
@@ -75,21 +75,11 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Select City:");
+        jLabel5.setText("Enter Admin ID:");
 
-        jLabel4.setText("Community:");
-
-        cityjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cityjComboBox.addActionListener(new java.awt.event.ActionListener() {
+        adminjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityjComboBoxActionPerformed(evt);
-            }
-        });
-
-        communityjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        communityjComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                communityjComboBoxActionPerformed(evt);
+                adminjTextFieldActionPerformed(evt);
             }
         });
 
@@ -104,36 +94,26 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(manageHosAdminJButton))
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(adminjTextField))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(communityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(53, 53, 53))
+                        .addGap(96, 96, 96)
+                        .addComponent(manageHosAdminJButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(119, 119, 119)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(communityjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(adminjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(manageHosAdminJButton)
                 .addGap(17, 17, 17))
         );
@@ -192,14 +172,24 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageHosAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageHosAdminJButtonActionPerformed
 //        selectedCity = cityjComboBox.getSelectedIndex();
-        strSelectedCommunity = communityjComboBox.getSelectedItem().toString();
-        HospitalDirectoryJPanel hospitalDirectoryJPanel = new HospitalDirectoryJPanel(userProcessJPanel, sysData, strSelectedCommunity);
+//       String selectedCity;
+        String SelectedCommunity;
+        
+        String ID = adminjTextField.getText();
+        CommunityAdmin commAdmin = sysData.getCommunityAdminById(Integer.parseInt(ID));
+        int comID = commAdmin.getCommId();
+        Community Com = sysData.getCommunityById(comID);
+        SelectedCommunity = Com.getCommName();
+  //      strSelectedCity = Com.getCity();
+ //       strSelectedCommunity = communityjComboBox.getSelectedItem().toString();
+        
+        HospitalDirectoryJPanel hospitalDirectoryJPanel = new HospitalDirectoryJPanel(userProcessJPanel, sysData, SelectedCommunity);
         userProcessJPanel.add("HospitalDirectoryJPanel", hospitalDirectoryJPanel);
         CardLayout layout = (CardLayout)userProcessJPanel.getLayout();
         layout.next(userProcessJPanel);
@@ -211,38 +201,35 @@ public class CommAdminMainJPanel extends javax.swing.JPanel {
         layout.previous(userProcessJPanel);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void communityjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityjComboBoxActionPerformed
+    private void adminjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminjTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_communityjComboBoxActionPerformed
-
-    private void cityjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityjComboBoxActionPerformed
-        selectedCity = cityjComboBox.getSelectedIndex();
-        prepCommunityDDList(selectedCity);
-    }//GEN-LAST:event_cityjComboBoxActionPerformed
+    }//GEN-LAST:event_adminjTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adminjTextField;
     private javax.swing.JButton backJButton;
-    private javax.swing.JComboBox<String> cityjComboBox;
-    private javax.swing.JComboBox<String> communityjComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton manageHosAdminJButton;
     // End of variables declaration//GEN-END:variables
 
-    private void prepCityDDList() {
-        sysData.getCityDDList().forEach(x -> cityjComboBox.addItem(x));
-    }
+//    private void prepCityDDList() {
+//        sysData.getCityDDList().
+//                forEach(x -> cityjComboBox.addItem(x));
+//    }
     
-    private void prepCommunityDDList(int selectedCity) {
+//    private void prepCommunityDDList(int selectedCity) {
         
-        sysData.getCommunityList().stream().
-                filter(a -> a.getCity() == selectedCity).toList().
-                    forEach(x -> communityjComboBox.addItem(x.getCommName()));
-    }
+//        if (sysData.getCommunityList() != null) {
+        
+//        sysData.getCommunityList().stream().
+//                filter(a -> a.getCity() == selectedCity).toList().
+//                    forEach(x -> communityjComboBox.addItem(x.getCommName()));
+//        }
+//    }
 
 }
