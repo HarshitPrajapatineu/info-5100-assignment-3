@@ -29,11 +29,13 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     SystemData sysData;
     CommunityList communityList;
     int patientId;
+    ArrayList<Community> commList;
     public PatientAppointmentJPanel(JPanel userProcessJPanel, SystemData sysData, int patientId) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
         this.sysData = sysData;
         this.patientId = patientId;
+        this.commList = sysData.communityList;
     }
 
     /**
@@ -152,35 +154,44 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel1)))
-                .addGap(55, 55, 55))
-            .addComponent(jScrollPane1)
-            .addComponent(jScrollPane3)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBookButton)
                 .addGap(229, 229, 229))
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(backJButton)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)))
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,16 +233,21 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             jSearchTextField.requestFocus();
         }
         else{
-            ArrayList<Community> commList = communityList.getCommunityList();
             for(Community c : commList){
                 String commName = c.getCommName();
                 if (commName.equalsIgnoreCase(jSearchTextField.getText())){
+                    JOptionPane.showMessageDialog(null, "Match found");
                     int commId = c.getCommId();
                     Hospital hospital = sysData.getHospitalByCommId(commId);
-                    Object row[] = {hospital.getHospitalId(), hospital.getHospitalName(), hospital.getAddress()};
-                    DefaultTableModel model = (DefaultTableModel) jHospitalTable.getModel();
-                    model.addRow(row);
-                }   
+                    if (hospital != null) {
+                        Object row[] = {hospital.getHospitalId(), hospital.getHospitalName(), hospital.getAddress()};
+                        DefaultTableModel model = (DefaultTableModel) jHospitalTable.getModel();
+                        model.addRow(row);
+                    }
+                }  
+                else{
+                    JOptionPane.showMessageDialog(null, "Match not found");
+                }
             }
         }
     }//GEN-LAST:event_jSearchButtonActionPerformed
@@ -240,21 +256,34 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         int rowIndex = jHospitalTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jHospitalTable.getModel();
         Hospital selectedHospital = (Hospital)model.getValueAt(rowIndex, 0);
+        if (selectedHospital != null){
         
-        Doctor doctor = sysData.getDoctorByHospitalId(selectedHospital.getHospitalId());
-        
-        Object row[] = {doctor.getDoctorName(), doctor.getExpertise()};
-        DefaultTableModel hospModel = (DefaultTableModel) jDoctorTable.getModel();
-        hospModel.addRow(row);
+            Doctor doctor = sysData.getDoctorByHospitalId(selectedHospital.getHospitalId());
+            if (doctor != null) {
+                Object row[] = {doctor.getDoctorName(), doctor.getExpertise()};
+                DefaultTableModel hospModel = (DefaultTableModel) jDoctorTable.getModel();
+                hospModel.addRow(row);
+        }
+        }
     }//GEN-LAST:event_jHospitalTableMouseClicked
 
     private void jBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBookButtonActionPerformed
         Date date = jDateChooser.getDate();
-        
-        Encounter newEncounter = new Encounter();
-        newEncounter.setAppointmentDate(date);
-        newEncounter.setPatientId(patientId);
-        JOptionPane.showMessageDialog(this, "Your appointment is booked!");
+        if (jHospitalTable.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(this, "Please select a hospital");
+        }
+        else if (jDoctorTable.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(this, "Please select a doctor");
+        }
+        else if (date == null){
+            JOptionPane.showMessageDialog(null, "Please enter date");
+        }
+        else{
+            Encounter newEncounter = new Encounter();
+            newEncounter.setAppointmentDate(date);
+            newEncounter.setPatientId(patientId);
+            JOptionPane.showMessageDialog(this, "Your appointment is booked!");
+        }
     }//GEN-LAST:event_jBookButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
