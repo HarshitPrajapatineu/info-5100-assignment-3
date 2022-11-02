@@ -172,11 +172,22 @@ public class SystemData {
     public ArrayList<Encounter> getEncounterListByDocId(int docId) {
         if(encounterList != null)
         {
-            ArrayList<Encounter> list = (ArrayList<Encounter>) encounterList.stream().
-                    filter(a -> a.getDoctorId() == (docId)).collect(toList());
-            return (ArrayList<Encounter>)list;
+            return (ArrayList<Encounter>) encounterList.stream().
+                filter(a -> a.getDoctorId() == (docId)).collect(toList());
         } else {
             return encounterList;
         }
+    }
+        
+    public ArrayList<Community> getCommunityListByName(String commName) {
+        return (ArrayList<Community>) communityList.stream().
+                filter(a -> a.getCommName().equals(commName)).collect(toList());
+
+    }
+        
+    public Community getCommunityByName(String commName) {
+        return communityList.stream().
+                filter(a -> a.getCommName().equals(commName)).findFirst().orElse(null);
+
     }
 }
