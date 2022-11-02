@@ -7,6 +7,7 @@ package view.patient;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Address;
@@ -276,7 +277,7 @@ public class PatientRegisterationJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter mobile number");
             jMobileNumberTextField.requestFocus();
         }
-        else if (!mobNum.equals("^(\\d{3}[- .]?){2}\\d{4}$")){
+        else if (Pattern.matches("^(\\d{3}[- .]?){2}\\d{4}$", mobNum)){
             JOptionPane.showMessageDialog(null, "Please enter valid mobile number");
             jMobileNumberTextField.requestFocus();
         }

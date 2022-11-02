@@ -279,29 +279,38 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jViewButtonActionPerformed
 
     private void jAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddButtonActionPerformed
-        float temperature = Float.parseFloat(jTemperatureTextField.getText());
-        float bloodPressure = Float.parseFloat(jBpTextField.getText());
-        int pulse = Integer.parseInt(jPulseTextField.getText());
-        String diagnosis = jDiagnosisTextArea.getText();
-        String prescription = jPrescriptionTextArea.getText();
-        
-        int patientId = patient.getPatientId();
-        
-        Encounter enc = new Encounter();
-        
-        VitalSign vs = new VitalSign();
-        vs.setTemperature(temperature);
-        vs.setBloodPressure(bloodPressure);
-        vs.setPulse(pulse);
-        
-        enc.setDoctorId(doctorId);
-        enc.setPatientId(patientId);
-        enc.setVitalSign(vs);
-        enc.setDiagnosis(diagnosis);
-        enc.setPrescription(prescription);
-        
-        populateTable();
+        if (jTemperatureTextField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Temperature can not be null");
+            jTemperatureTextField.requestFocus();
+        }
+        else if (jDiagnosisTextArea.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Diagnosis can not be null");
+            jDiagnosisTextArea.requestFocus();
+        }
+        else{
+            float temperature = Float.parseFloat(jTemperatureTextField.getText());
+            float bloodPressure = Float.parseFloat(jBpTextField.getText());
+            int pulse = Integer.parseInt(jPulseTextField.getText());
+            String diagnosis = jDiagnosisTextArea.getText();
+            String prescription = jPrescriptionTextArea.getText();
 
+            int patientId = patient.getPatientId();
+
+            Encounter enc = new Encounter();
+
+            VitalSign vs = new VitalSign();
+            vs.setTemperature(temperature);
+            vs.setBloodPressure(bloodPressure);
+            vs.setPulse(pulse);
+
+            enc.setDoctorId(doctorId);
+            enc.setPatientId(patientId);
+            enc.setVitalSign(vs);
+            enc.setDiagnosis(diagnosis);
+            enc.setPrescription(prescription);
+
+            populateTable();
+        }
     }//GEN-LAST:event_jAddButtonActionPerformed
 
     private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
@@ -311,6 +320,16 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
     private void jEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditButtonActionPerformed
         if (jTemperatureTextField.getText().equals("")){
             JOptionPane.showMessageDialog(null, "View the data first to edit");
+        }
+        else{
+            
+            if (jTemperatureTextField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Temperature can not be null");
+            jTemperatureTextField.requestFocus();
+        }
+        else if (jDiagnosisTextArea.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Diagnosis can not be null");
+            jDiagnosisTextArea.requestFocus();
         }
         else{
             DefaultTableModel model = (DefaultTableModel)jVitalSignsTable.getModel();
@@ -332,7 +351,7 @@ public class ViewVitalSignJPanel extends javax.swing.JPanel {
             enc.setDiagnosis(diagnosis);
             enc.setPrescription(prescription);
             populateTable();
-
+        }
         }
         
     }//GEN-LAST:event_jEditButtonActionPerformed
