@@ -43,6 +43,8 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
         isEditOn = selectedCommunityAdmin != null;
         this.userProcessJPanel = userProcessJPanel;
         setLabelOnEdit(isEditOn);
+        
+        validationJLabel.setText(validationMsg);
         prepCityDDList();
     }
 
@@ -511,14 +513,14 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_communityNameJTextFieldActionPerformed
 
     private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
-//        if (validateData()) {
-//            validationMsg = "";
-//            validationJLabel.setText(validationMsg);
+        if (validateData()) {
+            validationMsg = "";
+            validationJLabel.setText(validationMsg);
             saveData();
-//        }
-//        else {
-//            validationJLabel.setText(validationMsg);
-//        }
+        }
+        else {
+            validationJLabel.setText(validationMsg);
+        }
     }//GEN-LAST:event_saveJButtonActionPerformed
 
 
@@ -582,7 +584,7 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     }
 
     private void saveData() {
-        
+        boolean isSaved = false;
         if (isEditOn) {
             // save Community Data
             selectedCommunity.setCommName(communityNameJTextField.getText());
@@ -605,6 +607,8 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             addr.setPostalCode(postalCodeJTextField.getText());
             selectedCommunityAdmin.setAddress(addr);
             selectedCommunityAdmin.setCommId(selectedCommunity.getCommId());
+            isSaved = !isSaved;
+            
         } else {
             
             // Add Community
@@ -634,16 +638,32 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             newAdmin.setCommId(newComm.getCommId());
             
             sysData.getCommunityAdminList().add(newAdmin);
+            isSaved = !isSaved;
             
+        }
+        if (isSaved) {
+            // empty fields once you save it
+        firstNameJTextField.setText(EMPTY_STRING);
+        lastNameJTextField.setText(EMPTY_STRING);
+        genderJComboBox.setSelectedIndex(0);
+        cityJComboBox.setSelectedIndex(0);
+        cityCommJComboBox.setSelectedIndex(0);
+        
+        addressOneJTextField.setText(EMPTY_STRING);
+        addressTwoJTextField.setText(EMPTY_STRING);
+        postalCodeJTextField.setText(EMPTY_STRING);
+        phoneJTextField.setText(EMPTY_STRING);
+        emailJTextField.setText(EMPTY_STRING);
+        dobJDateChooser.setDate(null);
+        
+        commCommunityNameJTextField.setText(EMPTY_STRING);
+        communityNameJTextField.setText(EMPTY_STRING);
+        communityContactJTextField.setText(EMPTY_STRING);
+        communityPostalCodeJTextField.setText(EMPTY_STRING);
         }
         
     }
-
-    private boolean validateData() {
-        boolean val = validateFirstName() && validateLastName() && validatePostalCode() &&
-                validatePhone() && validateEmail();
-        return val;
-    }
+    
     private void renderView()
     {
         if (selectedCommunityAdmin != null) {
@@ -666,6 +686,12 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             postalCodeJTextField.setText(selectedCommunity.getPostalCode());
 
         }
+    }
+
+    private boolean validateData() {
+        boolean val = validateFirstName() && validateLastName() && validatePostalCode() &&
+                validatePhone() && validateEmail() && validateCommunityName() && validateCommunityNameForComm();
+        return val;
     }
     
     private boolean validateFirstName() {
@@ -693,24 +719,28 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
     private boolean validatePostalCode() {
         boolean status = false;
         if(postalCodeJTextField.getText() != null && !EMPTY_STRING.equals(postalCodeJTextField.getText().trim())) {
-            if (Pattern.matches("^[\\d\\w]{6}$", postalCodeJTextField.getText()) &&
-                    Integer.parseInt(postalCodeJTextField.getText()) > 16){
+            if (Pattern.matches("^[\\d\\w]{6}$", postalCodeJTextField.getText())){
                 status = true;
                 validationMsg = "";
             } else {
-                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid age";
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid postal code";
             }
         } else {
-            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter age";
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter postal code";
         }
         return status;
     }
 
-    
-
-    
-
-    
+    private boolean validateCommunityName() {
+        boolean status = false;
+        if(communityNameJTextField.getText() != null && !EMPTY_STRING.equals(communityNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter community name";
+        }
+        return status;
+    }
 
     private boolean validatePhone() {
         boolean status = false;
@@ -740,6 +770,37 @@ public class AddCommunityAdminJPanel extends javax.swing.JPanel {
             }
         } else {
             validationMsg = !validationMsg.equals("") ? validationMsg : "please enter email";
+        }
+        return status;
+    }
+    
+    private boolean validateCommunityNameForComm() {
+        boolean status = false;
+        if(commCommunityNameJTextField.getText().trim() != null && !EMPTY_STRING.equals(commCommunityNameJTextField.getText().trim())) {
+            if(!isEditOn) {
+                if(sysData.getCommunityListByName(commCommunityNameJTextField.getText()).size() > 0) {
+                    status = false;
+                    validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid community name";
+                    
+                } else {
+                    status = true;
+                    validationMsg = "";
+                }
+            } else {
+                if(sysData.getCommunityListByName(commCommunityNameJTextField.getText()).size() > 0) {
+                    if(selectedCommunity.getCommId() != sysData.getCommunityByName(commCommunityNameJTextField.getText()).getCommId()) {
+                        status = false;
+                        validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid community name";
+                    }
+                    
+                } else {
+                    status = true;
+                    validationMsg = "";
+                }
+            }
+            
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter community name";
         }
         return status;
     }

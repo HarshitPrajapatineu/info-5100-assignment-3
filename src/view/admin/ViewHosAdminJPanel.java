@@ -466,6 +466,10 @@ public class ViewHosAdminJPanel extends javax.swing.JPanel {
         getDataInForm();
     }//GEN-LAST:event_viewJButtonActionPerformed
 
+    private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {                                      
+        renderView();
+    } 
+    
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         int selectedRow = viewUserJTable.getSelectedRow();
         if (selectedRow < 0) {

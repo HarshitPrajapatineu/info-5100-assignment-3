@@ -13,7 +13,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Community;
 import model.CommunityAdmin;
-import model.HospitalAdmin;
 import model.SystemData;
 
 /**
@@ -30,7 +29,7 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     
     private static final String EMPTY_STRING = "";
     CommunityAdmin selectedCommunityAdmin;
-    Community selectedCommmunity;
+    Community selectedCommunity;
     public ViewCommAdminJPanel(JPanel userProcessJPanel, SystemData sysData) {
         initComponents();
         this.userProcessJPanel = userProcessJPanel;
@@ -93,6 +92,11 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(620, 540));
         setMinimumSize(new java.awt.Dimension(620, 540));
+        addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                formHierarchyChanged(evt);
+            }
+        });
 
         viewUserJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -460,7 +464,17 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewJButtonActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = viewUserJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) viewUserJTable.getModel();
+        int hospitalAdminId = (int) model.getValueAt(selectedRow, 0);
+        selectedCommunityAdmin = sysData.getCommunityAdminById(hospitalAdminId);
+        selectedCommunity = sysData.getCommunityById(selectedCommunityAdmin.getCommId());
+        
+        getDataInForm();
     }//GEN-LAST:event_viewJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
@@ -521,6 +535,10 @@ public class ViewCommAdminJPanel extends javax.swing.JPanel {
             sorter.setRowFilter(RowFilter.regexFilter(text));
         }
     }//GEN-LAST:event_searchJButtonActionPerformed
+
+    private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
+        renderView();
+    }//GEN-LAST:event_formHierarchyChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

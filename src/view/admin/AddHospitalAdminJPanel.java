@@ -5,6 +5,7 @@
 package view.admin;
 
 import java.awt.CardLayout;
+import java.util.regex.Pattern;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -25,12 +26,16 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessJPanel;
     SystemData sysData;
+    private static final String EMPTY_STRING = "";
     String addHospitalAdminHeadingLabel = "Add Hospital Admin Detail";
     String editHospitalAdminHeadingLabel = "Edit Hospital Admin Detail";
     String editHospitalAdminInsLabel = "*Edit Hospital Admin detail here.";
     HospitalAdmin selectedHospitalAdmin; 
     boolean isEditOn = false;
     boolean hospitalAssociationStatus = false;
+    
+    private String validationMsg = "";
+    private boolean validationStatus = false;
     
     public AddHospitalAdminJPanel(JPanel userProcessJPanel, SystemData sysData, HospitalAdmin selectedHospitalAdmin) {
         initComponents();
@@ -40,6 +45,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
         this.userProcessJPanel = userProcessJPanel;
         setLabelOnEdit(isEditOn);
         prepCityDDList();
+        validationJLabel.setText(validationMsg);
         renderView();
     }
 
@@ -83,7 +89,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         resetJButton = new javax.swing.JButton();
         saveJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        validationJLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -349,8 +355,8 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {resetJButton, saveJButton});
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("* validation label");
+        validationJLabel.setForeground(new java.awt.Color(255, 0, 0));
+        validationJLabel.setText("* validation label");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -360,7 +366,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(validationJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -370,7 +376,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(validationJLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -486,6 +492,14 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
             HospitalAdmin hAdmin = sysData.getHospitalAdminByHospitalId(hospitalId);
             hospitalAssociationStatus = hos != null && hAdmin == null;
         }
+        if(hospitalAssociationStatus)
+        {
+            validationMsg = "";
+        } else {
+            validationMsg = "Assign Valid Hospital Id";
+        }
+        validationJLabel.setText(validationMsg);
+        
     }//GEN-LAST:event_validateHospitalJButtonActionPerformed
 
     private void cityJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityJComboBoxActionPerformed
@@ -493,12 +507,14 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cityJComboBoxActionPerformed
 
     private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
-//        if (validateData()) {
-            saveData();   
-//        }
-//        else{
-//            
-//        }
+        if (validateData()) {
+            validationMsg = "";
+            validationJLabel.setText(validationMsg);
+            saveData();
+        }
+        else {
+            validationJLabel.setText(validationMsg);
+        }
     }//GEN-LAST:event_saveJButtonActionPerformed
 
     private void communityNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityNameJTextFieldActionPerformed
@@ -522,7 +538,6 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> genderJComboBox;
     private javax.swing.JLabel hospitalAdminInsJLabel;
     private javax.swing.JTextField hospitalIdJTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -548,6 +563,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton resetJButton;
     private javax.swing.JButton saveJButton;
     private javax.swing.JButton validateHospitalJButton;
+    private javax.swing.JLabel validationJLabel;
     // End of variables declaration//GEN-END:variables
 
     private void setLabelOnEdit(boolean isEditOn) {
@@ -565,7 +581,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
     }
 
     private void saveData() {
-        
+        boolean isSaved = false;
         if (isEditOn) {
             selectedHospitalAdmin.setFirstName(firstNameJTextField.getText());
             selectedHospitalAdmin.setLastName(lastNameJTextField.getText());
@@ -585,6 +601,7 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
             if(hospitalAssociationStatus) {
                 selectedHospitalAdmin.setHospitalId(Integer.parseInt(hospitalIdJTextField.getText()));
             }
+            isSaved = !isSaved;
         } else {
             HospitalAdmin newAdmin = new HospitalAdmin();
             newAdmin.setFirstName(firstNameJTextField.getText());
@@ -602,18 +619,32 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
             addr.setCity(cityJComboBox.getSelectedIndex());
             addr.setPostalCode(postalCodeJTextField.getText());
             newAdmin.setAddress(addr);
-//            if(hospitalAssociationStatus) {
+            if(hospitalAssociationStatus) {
                 newAdmin.setHospitalId(Integer.parseInt(hospitalIdJTextField.getText()));
-//            }
+            }
             sysData.getHospitalAdminList().add(newAdmin);
-            
+            isSaved = !isSaved;
+        }
+        
+        if (isSaved) {
+            // empty fields once you save it
+        firstNameJTextField.setText(EMPTY_STRING);
+        lastNameJTextField.setText(EMPTY_STRING);
+        genderJComboBox.setSelectedIndex(0);
+        cityJComboBox.setSelectedIndex(0);
+        
+        addressOneJTextField.setText(EMPTY_STRING);
+        addressTwoJTextField.setText(EMPTY_STRING);
+        postalCodeJTextField.setText(EMPTY_STRING);
+        phoneJTextField.setText(EMPTY_STRING);
+        emailJTextField.setText(EMPTY_STRING);
+        dobJDateChooser.setDate(null);
+        communityNameJTextField.setText(EMPTY_STRING);
+        hospitalIdJTextField.setText(EMPTY_STRING);
         }
         
     }
 
-    private boolean validateData() {
-        return false;
-    }
     private void renderView()
     {
         if (selectedHospitalAdmin != null) {
@@ -629,6 +660,111 @@ public class AddHospitalAdminJPanel extends javax.swing.JPanel {
             postalCodeJTextField.setText(selectedHospitalAdmin.getAddress().getPostalCode());
             hospitalIdJTextField.setText(String.valueOf(selectedHospitalAdmin.getHospitalId()));
         }
+    }
+    
+    private boolean validateData() {
+        boolean val = validateFirstName() && validateLastName() && 
+                validatePhone() && validateEmail() && validatePostalCode() && validateCommunityName() 
+                && validateHospitalId();
+        return val;
+    }
+    
+    private boolean validateFirstName() {
+        boolean status = false;
+        if(firstNameJTextField.getText().trim() != null && !EMPTY_STRING.equals(firstNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter name";
+        }
+        return status;
+    }
+    
+    private boolean validateLastName() {
+        boolean status = false;
+        if(lastNameJTextField.getText().trim() != null && !EMPTY_STRING.equals(lastNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter name";
+        }
+        return status;
+    }
+
+    private boolean validatePostalCode() {
+        boolean status = false;
+        if(postalCodeJTextField.getText() != null && !EMPTY_STRING.equals(postalCodeJTextField.getText().trim())) {
+            if (Pattern.matches("^[\\d\\w]{6}$", postalCodeJTextField.getText())){
+                status = true;
+                validationMsg = "";
+            } else {
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid postal code";
+            }
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter postal code";
+        }
+        return status;
+    }
+
+    private boolean validateCommunityName() {
+        boolean status = false;
+        if(communityNameJTextField.getText() != null && !EMPTY_STRING.equals(communityNameJTextField.getText().trim())) {
+            status = true;
+            validationMsg = "";
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter community name";
+        }
+        return status;
+    }
+
+    private boolean validatePhone() {
+        boolean status = false;
+        if(phoneJTextField.getText() != null && !EMPTY_STRING.equals(phoneJTextField.getText().trim())) {
+            if(Pattern.matches("^(\\d{3}[- .]?){2}\\d{4}$", phoneJTextField.getText())) {
+                status = true;
+                validationMsg = "";
+            } else {
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid phone";
+            }
+            
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter phone";
+        }
+        return status;
+    }
+
+    private boolean validateEmail() {
+        boolean status = false;
+        if(emailJTextField.getText() != null && !EMPTY_STRING.equals(emailJTextField.getText().trim())) {
+            if(Pattern.matches("^[a-zA-Z0-9._%+]+@[a-zA-Z0-9]+.[A-Za-z]+$", emailJTextField.getText())) {
+                status = true;
+                validationMsg = "";
+            } else {
+                status = false;
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid email";
+            }
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter email";
+        }
+        return status;
+    }
+    
+    private boolean validateHospitalId() {
+        boolean status = false;
+        if(hospitalIdJTextField.getText().trim() != null && !EMPTY_STRING.equals(hospitalIdJTextField.getText().trim())) {
+            if(hospitalAssociationStatus)
+            {
+                status = true;
+                validationMsg = "";
+            } else {
+                status = false;
+                validationMsg = !validationMsg.equals("") ? validationMsg : "please enter valid Hospital Id";
+            }
+                
+        } else {
+            validationMsg = !validationMsg.equals("") ? validationMsg : "please enter Hospital Id";
+        }
+        return status;
     }
     
 }
