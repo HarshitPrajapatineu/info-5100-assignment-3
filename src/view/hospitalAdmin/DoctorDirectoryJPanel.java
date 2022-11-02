@@ -5,6 +5,8 @@
 package view.hospitalAdmin;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import static java.util.stream.Collectors.toList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
@@ -316,9 +318,10 @@ public class DoctorDirectoryJPanel extends javax.swing.JPanel {
                 JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (selectedOption == 0) {
             int DoctorID = (int)model.getValueAt(selectedRow,0);
+            Doctor doc =  sysData.getDoctorById(DoctorID);
 //            Hospital selectedHospital = HospitalDirectoryjTable.
-            sysData.getDoctorList().remove(DoctorID);
-//            refreshView();
+            sysData.getDoctorList().remove(doc);
+            renderTable(inthospID);
 //            setAllFieldsEnabled(false);
         }
     }//GEN-LAST:event_deleteJButtonActionPerformed
@@ -415,8 +418,8 @@ private void renderTable(int hospitalId) {
 
         DefaultTableModel dtm = (DefaultTableModel) DoctorDirectoryjTable.getModel();
         dtm.setRowCount(0);
-        var doctorList = sysData.getDoctorList().stream().
-                filter(a -> a.getHospitalId() == hospitalId).toList();
+        ArrayList<Doctor> doctorList = (ArrayList<Doctor>) sysData.getDoctorList().stream().
+                filter(a -> a.getHospitalId() == hospitalId).collect(toList());
         
         if(doctorList!= null){
             for (Doctor doc : doctorList) {

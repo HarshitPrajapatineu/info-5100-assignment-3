@@ -33,7 +33,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         this.userProcessJPanel = userProcessJPanel;
         
         setLabelOnEdit(isEditOn, selectedDoctor);
-        hospID=this.hospID;
+        this.hospID = hospID;
     }
 
     /**
