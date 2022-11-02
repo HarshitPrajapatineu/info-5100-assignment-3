@@ -270,10 +270,16 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter date");
         }
         else{
+//            int rowIndex = jDoctorTable.getSelectedRow();
+//            DefaultTableModel model = (DefaultTableModel) jDoctorTable.getModel();
+//            Doctor selectedDoctor = (Doctor)model.getValueAt(rowIndex, 0);
+//            int doctorId = selectedDoctor.getEmpId();
             Encounter newEncounter = new Encounter();
             newEncounter.setAppointmentDate(date);
             newEncounter.setPatientId(patientId);
+//            newEncounter.setDoctorId(doctorId);
             JOptionPane.showMessageDialog(this, "Your appointment is booked!");
+            
         }
     }//GEN-LAST:event_jBookButtonActionPerformed
 

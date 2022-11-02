@@ -117,7 +117,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(179, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(viewDetailsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +126,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jDoctorIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(jGoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(130, 130, 130))))
             .addGroup(layout.createSequentialGroup()
@@ -146,9 +146,9 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jDoctorIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jGoButton))
-                .addGap(46, 46, 46)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(viewDetailsjButton)
@@ -193,7 +193,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Please enter a valid ID");
             }
             else{
-                ArrayList<Encounter> encList= sysData.getEncounterListByDocId(doctorId);
+                ArrayList<Encounter> encList = sysData.getEncounterListByDocId(doctorId);
                 DefaultTableModel dtm = (DefaultTableModel) jPatientsTable.getModel();
                 dtm.setRowCount(0);
                 for (Encounter enc : encList) {
