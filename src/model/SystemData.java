@@ -130,7 +130,7 @@ public class SystemData {
     public Encounter getEncounterByPatientId(int patientId){
         return encounterList.stream().filter(a -> a.getPatientId() == (patientId)).findAny().orElse(null);
     }
-    
+
     public Hospital getHospitalByCommId(int commId){
         return hospitalList.stream().filter(a -> a.getCommId()== (commId)).findAny().orElse(null);
     }
@@ -149,6 +149,12 @@ public class SystemData {
     
     public boolean isPatientExists(int patId) {
         return patientList.stream().anyMatch(a -> a.getPatientId()== (patId));
+    }
+    
+
+    public Doctor getDoctorById(int hospitalId) {
+        return doctorList.stream().
+                filter(a -> a.getEmpId() == (hospitalId)).findAny().orElse(null);
     }
     
     public boolean isDoctorExists(int doctorId) {
